@@ -12,9 +12,6 @@
 |
 */
 
-
-Route::get('send-email-pdf', 'OrderController@createPDF');
-
 Route::get('/{any}', function(){
     return view('app');
 })->where('any', '.*');
