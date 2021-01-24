@@ -24,7 +24,11 @@
   <component name="ChangeListManager">
     <list default="true" id="389efe6c-cab3-4a24-8f12-40f431228ba9" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/Contact/description.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/Contact/description.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/18.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/18.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/24.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/24.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/resetPassword/ResetPasswordForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/resetPassword/ResetPasswordForm.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/user/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/user/login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -344,7 +348,7 @@
       <workItem from="1611353405277" duration="5632000" />
       <workItem from="1611407975842" duration="6698000" />
       <workItem from="1611415533584" duration="7896000" />
-      <workItem from="1611489382853" duration="15880000" />
+      <workItem from="1611489382853" duration="18875000" />
     </task>
     <servers />
   </component>
@@ -362,6 +366,18 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/resources/js/pages/resetPassword/ResetPasswordForm.vue</url>
+          <line>4</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

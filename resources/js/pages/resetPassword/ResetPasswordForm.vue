@@ -15,6 +15,28 @@
                     Spremeni geslo
                 </v-btn>
             </v-form>
+
+            <v-alert
+                class="mt-3"
+                v-if="message"
+                :type="is_error ? 'error' : 'success'"
+            >
+                <div v-if="message.email != null">
+                    <p v-for="message in message.email">
+                        {{ message }}
+                    </p>
+                </div>
+
+                <div v-if="message.password != null">
+                    <p v-for="message in message.password">
+                        {{ message }}
+                    </p>
+                </div>
+
+                <p v-if="!is_error">
+                    {{ message }}
+                </p>
+            </v-alert>
         </v-card-text>
     </v-card>
 </template>
@@ -28,6 +50,8 @@ export default {
             email: null,
             newPassword: null,
             newPasswordAgain: null,
+            message: null,
+            is_error: null
         }
     },
     methods: {
@@ -41,7 +65,12 @@ export default {
 
             api.resetPassword(data)
                 .then((response) => {
-                    console.log(response)
+                    this.is_error = false
+                    this.message = response.data.message
+                })
+                .catch((err)=>{
+                    this.is_error = true
+                    this.message = err.response.data.errors
                 })
         }
     }

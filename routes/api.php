@@ -48,6 +48,10 @@ Route::post('/set-password', 'RegisterController@sendPasswordResetLink');
 Route::post('/create-payment', 'OrderController@createOrder');
 Route::post('/execute-payment', 'OrderController@executePayment');
 
+//Password reset
+Route::post('/reset-password', 'PasswordController@sendPasswordResetLink');
+Route::post('/reset/password', 'PasswordController@callResetPassword');
+
 Route::middleware('auth:api')->group(function (){
     // Favourites
     Route::get('/user/favourites', 'FavouriteController@getFavourites');
@@ -74,11 +78,6 @@ Route::middleware('auth:api')->group(function (){
     Route::get('/contact/all/oldest', 'ContactController@getOldestContacts');
 
     // Admin authentication is required
-
-    //Password reset
-    Route::post('/reset-password', 'PasswordController@sendPasswordResetLink');
-    Route::post('/reset/password', 'PasswordController@callResetPassword');
-
     Route::post('/items/search', 'ItemController@searchForItems')->middleware('check.admin');
     Route::patch('/item/{id}/change/status', 'ItemController@changeStatus')->middleware('check.admin');
     Route::patch('/item/{id}/change', 'ItemController@changeItem')->middleware('check.admin');

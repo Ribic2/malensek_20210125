@@ -79,8 +79,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -227,33 +225,47 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
+              _c(
+                "p",
+                { staticClass: "text-center mt-2" },
+                [
+                  _c("router-link", { attrs: { to: "/reset-password" } }, [
+                    _vm._v("Ali ste pozabili geslo?")
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
               _vm.response
                 ? _c("v-alert", { attrs: { type: "error" } }, [
-                    _vm.response.errors
-                      ? _c("ul", [
-                          _c("li", [
-                            _vm._v(
-                              "\n                        " +
-                                _vm._s(_vm.response.message) +
-                                "\n                    "
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("li", [
-                            _vm._v(
-                              "\n                        " +
-                                _vm._s(_vm.response.errors.email[0]) +
-                                "\n                    "
-                            )
-                          ])
-                        ])
-                      : _c("p", [
+                    _vm.response.message != null
+                      ? _c("p", [
                           _vm._v(
                             "\n                    " +
                               _vm._s(_vm.response.message) +
                               "\n                "
                           )
                         ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.response.errors != null
+                      ? _c(
+                          "div",
+                          _vm._l(_vm.response.errors.email, function(
+                            errors,
+                            index
+                          ) {
+                            return _c("p", { key: index }, [
+                              _vm._v(
+                                "\n                        " +
+                                  _vm._s(errors) +
+                                  "\n                    "
+                              )
+                            ])
+                          }),
+                          0
+                        )
+                      : _vm._e()
                   ])
                 : _vm._e()
             ],

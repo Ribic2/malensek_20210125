@@ -26,7 +26,6 @@
                         @click:append="showPassword = !showPassword"
                         :prepend-icon="this.mdiLock"
                     ></v-text-field>
-
                     <v-card-actions>
                         <v-btn
                             width="100%"
@@ -38,21 +37,20 @@
                         </v-btn>
                     </v-card-actions>
                 </v-form>
+                <p class="text-center mt-2">
+                    <router-link to="/reset-password">Ali ste pozabili geslo?</router-link>
+                </p>
 
 
                 <v-alert type="error" v-if="response">
-                    <ul v-if="response.errors">
-                        <li>
-                            {{ response.message }}
-                        </li>
-                        <li>
-                            {{ response.errors.email[0] }}
-                        </li>
-                    </ul>
-
-                    <p v-else>
+                    <p v-if="response.message != null">
                         {{ response.message }}
                     </p>
+                    <div v-if="response.errors != null">
+                        <p v-for="(errors, index) in response.errors.email" :key="index">
+                            {{ errors }}
+                        </p>
+                    </div>
                 </v-alert>
 
             </v-card-text>
@@ -85,7 +83,7 @@ export default {
                 }).then(() => {
                     this.$store.state.user.spinner = false
                     document.location.href = "/";
-                 })
+                })
                 .catch((err) => {
                     this.$store.state.user.spinner = false
                     this.response = err.response.data
