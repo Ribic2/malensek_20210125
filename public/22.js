@@ -203,8 +203,8 @@ var render = function() {
                             _vm._v(
                               _vm._s(
                                 _vm.show
-                                  ? _vm.filterEnabled
-                                  : _vm.filterDisabled
+                                  ? _vm.filterDisabled
+                                  : _vm.filterEnabled
                               )
                             )
                           ])

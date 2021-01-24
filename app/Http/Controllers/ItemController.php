@@ -29,10 +29,6 @@ class ItemController extends Controller
      */
     public function uploadImageAndCreateFolder($images, $name, $primaryImage)
     {
-        if (Storage::exists('/public/products/' . $name)) {
-            abort(403, "Directory already exists!");
-        }
-
         // Inserts primary image
         $primaryImage->storeAs('/public/products/' . $name, "picture-PI-" . $name . ".jpg");
 
@@ -66,6 +62,11 @@ class ItemController extends Controller
             abort(400, "Some of the data is missing");
         }
 
+        // checks if directory already exists
+        if (Storage::exists('/public/products/' . $request->input('itemName'))) {
+            abort(403, "Directory already exists!");
+        }
+
         // Checks if images are inserted and if primary image is selected
         if (!$request->hasFile('primaryImage') || !$request->hasFile('images')) {
             abort(400, "Either primary image or images are missing!");
@@ -85,13 +86,15 @@ class ItemController extends Controller
             "defaultItemPrice" => $request->input('itemPrice')
         ])->save();
 
-        if ($item) {
-            $this->uploadImageAndCreateFolder(
-                $request->file('images'),
-                $request->input('itemName'),
-                $request->file('primaryImage')
-            );
+        if (!$item) {
+           abort(400, "There was an error adding an item!");
         }
+
+        $this->uploadImageAndCreateFolder(
+            $request->file('images'),
+            $request->input('itemName'),
+            $request->file('primaryImage')
+        );
 
         return response()->json("Item was created");
     }

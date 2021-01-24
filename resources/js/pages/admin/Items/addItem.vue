@@ -24,7 +24,7 @@
                             </v-col>
                             <v-col>
                                 <v-text-field
-                                    prefix="$"
+                                    prefix="€"
                                     label="Cena izdelka"
                                     v-model="itemPrice"
                                     @focusout="formatPrice()"
@@ -178,7 +178,9 @@ export default {
     methods: {
         // Formats item price to 2 decimal
         formatPrice() {
-            this.itemPrice = this.itemPrice.match(/^\d+\.?\d{1,2}/)
+            if(this.itemPrice !== null){
+                this.itemPrice = parseFloat(this.itemPrice).toFixed(2)
+            }
         },
         addItem() {
             Axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';

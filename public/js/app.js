@@ -99678,7 +99678,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     {
       path: '',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(4), __webpack_require__.e(22)]).then(__webpack_require__.bind(null, /*! ../pages/index/index */ "./resources/js/pages/index/index.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(29), __webpack_require__.e(22)]).then(__webpack_require__.bind(null, /*! ../pages/index/index */ "./resources/js/pages/index/index.vue"));
       }
     }, // Contact page
     {
@@ -99690,7 +99690,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     {
       path: '/favourites',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(4), __webpack_require__.e(9)]).then(__webpack_require__.bind(null, /*! ../pages/favourites.vue */ "./resources/js/pages/favourites.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(29), __webpack_require__.e(9)]).then(__webpack_require__.bind(null, /*! ../pages/favourites.vue */ "./resources/js/pages/favourites.vue"));
       }
     }, // Login
     {
@@ -99746,6 +99746,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       }
     }, {
       path: '/item/:id',
+      name: 'item',
       component: function component() {
         return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(12)]).then(__webpack_require__.bind(null, /*! ../pages/Item/View.vue */ "./resources/js/pages/Item/View.vue"));
       }
@@ -99761,6 +99762,11 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       name: 'reset-password-form',
       component: function component() {
         return __webpack_require__.e(/*! import() */ 18).then(__webpack_require__.bind(null, /*! ../pages/resetPassword/ResetPasswordForm.vue */ "./resources/js/pages/resetPassword/ResetPasswordForm.vue"));
+      }
+    }, {
+      path: '/opodjetju',
+      component: function component() {
+        return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ../pages/about/index */ "./resources/js/pages/about/index.vue"));
       }
     }, {
       path: '/success',
@@ -100407,11 +100413,17 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   getters: {
-    setCart: function setCart(state) {
+    setCart: function setCart(state, rootState) {
       return function (id) {
-        return state.cart.find(function (item) {
-          return item.itemId === id;
-        });
+        if (rootState.user == null) {
+          return state.cart.find(function (item) {
+            return id === item.items.id;
+          });
+        } else {
+          return state.cart.find(function (item) {
+            return id === item.itemId;
+          });
+        }
       };
     }
   }
@@ -100658,6 +100670,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     SET_GUEST_DATA: function SET_GUEST_DATA(state, payload) {
       state.guest = payload;
+    },
+    TOGGLE_SPINNER: function TOGGLE_SPINNER(state, payload) {
+      state.spinner = payload;
     }
   },
   actions: {

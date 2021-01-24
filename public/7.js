@@ -373,8 +373,6 @@ __webpack_require__.r(__webpack_exports__);
       // Else it updates database
       if (this.user.length === 0) {
         this.cart.forEach(function (element, index) {
-          console.log(element);
-
           if (element === item) {
             _this.$store.state.cart.cart.splice(index, 1);
           }
@@ -446,7 +444,6 @@ __webpack_require__.r(__webpack_exports__);
           this.$store.state.cart.cart.forEach(function (element) {
             if (element === item) {
               if (element.items.quantity >= element.quantity + 1) {
-                console.log("here");
                 element.quantity = parseInt(element.quantity) + 1;
                 _services_api__WEBPACK_IMPORTED_MODULE_1__["default"].changeCartItemQuantity(item.itemId, {
                   quantity: quantityChange

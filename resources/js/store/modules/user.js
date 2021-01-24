@@ -33,6 +33,9 @@ export default{
         },
         SET_GUEST_DATA(state, payload){
             state.guest = payload
+        },
+        TOGGLE_SPINNER(state, payload){
+            state.spinner = payload
         }
     },
     actions:{

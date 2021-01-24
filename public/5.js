@@ -191,6 +191,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -243,6 +258,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Profile_history_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Profile/history.vue */ "./resources/js/pages/user/Profile/history.vue");
 /* harmony import */ var _Profile_changeBasic__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Profile/changeBasic */ "./resources/js/pages/user/Profile/changeBasic.vue");
 /* harmony import */ var _Profile_changeResidence__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Profile/changeResidence */ "./resources/js/pages/user/Profile/changeResidence.vue");
+//
+//
+//
+//
 //
 //
 //
@@ -562,37 +581,121 @@ var render = function() {
                             1
                           ),
                           _vm._v(" "),
-                          _c("v-col", [
-                            _vm._v(
-                              "\n                        Ime izdelka " +
-                                _vm._s(item.item.itemName) +
-                                "\n                    "
-                            )
-                          ]),
+                          _c(
+                            "v-col",
+                            [
+                              _c(
+                                "v-row",
+                                [
+                                  _c("v-col", { attrs: { cols: "12" } }, [
+                                    _c("h4", { staticClass: "text-center" }, [
+                                      _vm._v("Ime izdelka")
+                                    ])
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("v-col", { attrs: { cols: "12" } }, [
+                                    _c(
+                                      "h5",
+                                      { staticClass: "text-center" },
+                                      [
+                                        _c(
+                                          "router-link",
+                                          {
+                                            attrs: {
+                                              to: {
+                                                name: "item",
+                                                params: { id: item.item.id }
+                                              }
+                                            }
+                                          },
+                                          [_vm._v(_vm._s(item.item.itemName))]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ])
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          ),
                           _vm._v(" "),
-                          _c("v-col", [
-                            _vm._v(
-                              "\n                        Cena izdelka " +
-                                _vm._s(item.item.itemPrice) +
-                                "\n                    "
-                            )
-                          ]),
+                          _c(
+                            "v-col",
+                            [
+                              _c(
+                                "v-row",
+                                [
+                                  _c("v-col", { attrs: { cols: "12" } }, [
+                                    _c("h4", { staticClass: "text-center" }, [
+                                      _vm._v("Cena izdelka")
+                                    ])
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("v-col", { attrs: { cols: "12" } }, [
+                                    _c("h5", { staticClass: "text-center" }, [
+                                      _vm._v(_vm._s(item.item.itemPrice) + "€")
+                                    ])
+                                  ])
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          ),
                           _vm._v(" "),
-                          _c("v-col", [
-                            _vm._v(
-                              "\n                        Naročena količina " +
-                                _vm._s(item.quantity) +
-                                "\n                    "
-                            )
-                          ]),
+                          _c(
+                            "v-col",
+                            [
+                              _c(
+                                "v-row",
+                                [
+                                  _c("v-col", { attrs: { cols: "12" } }, [
+                                    _c("h4", { staticClass: "text-center" }, [
+                                      _vm._v("Naročena količina")
+                                    ])
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("v-col", { attrs: { cols: "12" } }, [
+                                    _c("h5", { staticClass: "text-center" }, [
+                                      _vm._v(_vm._s(item.quantity))
+                                    ])
+                                  ])
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          ),
                           _vm._v(" "),
-                          _c("v-col", [
-                            _vm._v(
-                              "\n                        Skupna cena izdelka in količine " +
-                                _vm._s(item.quantity * item.item.itemPrice) +
-                                "\n                    "
-                            )
-                          ])
+                          _c(
+                            "v-col",
+                            [
+                              _c(
+                                "v-row",
+                                [
+                                  _c("v-col", { attrs: { cols: "12" } }, [
+                                    _c("h4", { staticClass: "text-center" }, [
+                                      _vm._v("Skupna cena")
+                                    ])
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("v-col", { attrs: { cols: "12" } }, [
+                                    _c("h5", { staticClass: "text-center" }, [
+                                      _vm._v(
+                                        _vm._s(
+                                          item.quantity * item.item.itemPrice
+                                        ) + "€"
+                                      )
+                                    ])
+                                  ])
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
                         ],
                         1
                       )
@@ -822,9 +925,17 @@ var render = function() {
         1
       ),
       _vm._v(" "),
+      _c("v-divider"),
+      _vm._v(" "),
       _c(
         "v-row",
-        [_c("v-col", { attrs: { cols: "12" } }, [_c("history")], 1)],
+        [
+          _c("v-col", { attrs: { cols: "12" } }, [
+            _c("h1", [_vm._v("Naročila")])
+          ]),
+          _vm._v(" "),
+          _c("v-col", { attrs: { cols: "12" } }, [_c("history")], 1)
+        ],
         1
       )
     ],
@@ -1138,7 +1249,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuetify/lib/components/VCard */ "./node_modules/vuetify/lib/components/VCard/index.js");
 /* harmony import */ var vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuetify/lib/components/VGrid */ "./node_modules/vuetify/lib/components/VGrid/index.js");
 /* harmony import */ var vuetify_lib_components_VDialog__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuetify/lib/components/VDialog */ "./node_modules/vuetify/lib/components/VDialog/index.js");
-/* harmony import */ var vuetify_lib_components_VExpansionPanel__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuetify/lib/components/VExpansionPanel */ "./node_modules/vuetify/lib/components/VExpansionPanel/index.js");
+/* harmony import */ var vuetify_lib_components_VDivider__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuetify/lib/components/VDivider */ "./node_modules/vuetify/lib/components/VDivider/index.js");
+/* harmony import */ var vuetify_lib_components_VExpansionPanel__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vuetify/lib/components/VExpansionPanel */ "./node_modules/vuetify/lib/components/VExpansionPanel/index.js");
 
 
 
@@ -1173,7 +1285,8 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 
 
-_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3___default()(component, {VBtn: vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_4__["VBtn"],VCard: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCard"],VCardActions: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCardActions"],VCardText: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCardText"],VCardTitle: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCardTitle"],VCol: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__["VCol"],VContainer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__["VContainer"],VDialog: vuetify_lib_components_VDialog__WEBPACK_IMPORTED_MODULE_7__["VDialog"],VExpansionPanel: vuetify_lib_components_VExpansionPanel__WEBPACK_IMPORTED_MODULE_8__["VExpansionPanel"],VExpansionPanelContent: vuetify_lib_components_VExpansionPanel__WEBPACK_IMPORTED_MODULE_8__["VExpansionPanelContent"],VExpansionPanelHeader: vuetify_lib_components_VExpansionPanel__WEBPACK_IMPORTED_MODULE_8__["VExpansionPanelHeader"],VExpansionPanels: vuetify_lib_components_VExpansionPanel__WEBPACK_IMPORTED_MODULE_8__["VExpansionPanels"],VRow: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__["VRow"],VSpacer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__["VSpacer"]})
+
+_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3___default()(component, {VBtn: vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_4__["VBtn"],VCard: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCard"],VCardActions: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCardActions"],VCardText: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCardText"],VCardTitle: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCardTitle"],VCol: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__["VCol"],VContainer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__["VContainer"],VDialog: vuetify_lib_components_VDialog__WEBPACK_IMPORTED_MODULE_7__["VDialog"],VDivider: vuetify_lib_components_VDivider__WEBPACK_IMPORTED_MODULE_8__["VDivider"],VExpansionPanel: vuetify_lib_components_VExpansionPanel__WEBPACK_IMPORTED_MODULE_9__["VExpansionPanel"],VExpansionPanelContent: vuetify_lib_components_VExpansionPanel__WEBPACK_IMPORTED_MODULE_9__["VExpansionPanelContent"],VExpansionPanelHeader: vuetify_lib_components_VExpansionPanel__WEBPACK_IMPORTED_MODULE_9__["VExpansionPanelHeader"],VExpansionPanels: vuetify_lib_components_VExpansionPanel__WEBPACK_IMPORTED_MODULE_9__["VExpansionPanels"],VRow: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__["VRow"],VSpacer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__["VSpacer"]})
 
 
 /* hot reload */

@@ -115,6 +115,7 @@ const router = new VueRouter({
                 },
                 {
                     path: '/item/:id',
+                    name: 'item',
                     component: () => import('../pages/Item/View.vue'),
                 },
 
@@ -128,6 +129,10 @@ const router = new VueRouter({
                     path: '/reset-password/:token',
                     name: 'reset-password-form',
                     component: () => import('../pages/resetPassword/ResetPasswordForm.vue')
+                },
+                {
+                    path: '/opodjetju',
+                    component: ()=>import('../pages/about/index')
                 },
                 {
                     path: '/success',

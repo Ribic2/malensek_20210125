@@ -46,14 +46,15 @@
                     </v-card-text>
 
                     <!-- Items data -->
-                    <v-simple-table>
+                    <v-simple-table height="250px">
                         <thead>
                         <tr>
                             <th>Id izdelka</th>
                             <th>Ime izdelka</th>
                             <th>Cena izdelka</th>
                             <th>Količina naročila</th>
-                            <th>Celotna cena</th>
+                            <th>Skupna cena</th>
+                            <th>Info o izdelku</th>
                         </tr>
                         </thead>
 
@@ -61,18 +62,29 @@
                         <tr v-for="(item, index) in items.items" :key="index">
                             <td>{{ item.item.id }}</td>
                             <td>{{ item.item.itemName }}</td>
-                            <td>{{ item.item.itemPrice }}</td>
+                            <td>{{ item.item.itemPrice }}&euro;</td>
                             <td>{{ item.quantity }}</td>
-                            <td>{{ item.quantity * item.item.itemPrice }}</td>
+                            <td>{{ item.quantity * item.item.itemPrice }}&euro;</td>
+                            <td>
+                                <v-btn
+                                    @click="$router.push({name: 'item', params:{id: item.item.id}})">
+                                    Izdelek
+                                </v-btn>
+                            </td>
                         </tr>
                         </tbody>
                     </v-simple-table>
-
-                    <v-card-actions>
+                    <v-divider></v-divider>
+                    <v-card-actions v-if="items.status === 'not-reviewed' || items.status === 'delayed'">
                         <v-btn @click="confirmOrder(items.id)">Potrdi</v-btn>
                         <v-btn @click="denyOrder(items.id)">Zavrni</v-btn>
-                        <v-btn @click="delayOrder(items.id)">Zamik v dostavi</v-btn>
+                        <v-btn @click="delayOrder(items.id)" v-if="items.status !== 'delayed'">Zamik v dostavi</v-btn>
+                        <v-btn v-else-if="items.status === 'delayed'">Dostava zamaknjena</v-btn>
                     </v-card-actions>
+
+                    <v-card-title v-else>
+                        Paket je bil že potrjen!
+                    </v-card-title>
                 </v-card>
             </v-col>
         </v-row>
@@ -111,20 +123,29 @@ export default {
                 })
         },
         confirmOrder(id) {
+            this.$store.commit('TOGGLE_SPINNER', true)
             api.complete(id)
             .then(()=>{
-                this.complete()
+                this.notComplete()
+                this.$store.commit('TOGGLE_SPINNER', false)
             })
         },
         denyOrder(id) {
+            this.$store.commit('TOGGLE_SPINNER', true)
             api.deny(id)
             .then(()=>{
-                this.complete()
+                this.notComplete()
+                this.$store.commit('TOGGLE_SPINNER', false)
             })
         },
 
         delayOrder(id){
+            this.$store.commit('TOGGLE_SPINNER', true)
             api.delay(id)
+            .then(()=>{
+                this.notComplete()
+                this.$store.commit('TOGGLE_SPINNER', false)
+            })
         },
 
         // Filter
@@ -154,7 +175,7 @@ export default {
         },
     },
     mounted() {
-        this.getOrders()
+        this.notComplete()
     }
 }
 </script>

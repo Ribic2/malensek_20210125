@@ -19,7 +19,7 @@ class CreateOrderUiidsTable extends Migration
             $table->foreignId('userId')->references('id')->on('users');
             $table->boolean('paymentStatus')->nullable($value=true);
             $table->enum('typeOfPayment', ['whenDelivered', 'prepaid'])->nullable($value=true);
-            $table->enum('status', ['confirmed', 'denied', 'not-reviewed']);
+            $table->enum('status', ['confirmed', 'denied', 'not-reviewed', 'delayed']);
             $table->timestamps();
         });
     }

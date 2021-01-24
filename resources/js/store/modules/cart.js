@@ -88,8 +88,13 @@ export default {
         }
     },
     getters:{
-        setCart: (state) => (id) =>{
-            return state.cart.find(item =>  item.itemId === id)
+        setCart: (state, rootState) => (id) =>{
+            if( rootState.user == null){
+                return state.cart.find(item => id === item.items.id)
+            }
+            else{
+                return state.cart.find(item => id === item.itemId)
+            }
         }
     }
 }

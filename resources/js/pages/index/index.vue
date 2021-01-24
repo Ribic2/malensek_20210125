@@ -14,7 +14,7 @@
                         icon
                         @click="show = !show"
                     >
-                        <v-icon>{{ show ? filterEnabled : filterDisabled }}</v-icon>
+                        <v-icon>{{ show ?  filterDisabled : filterEnabled }}</v-icon>
                     </v-btn>
                 </v-card-actions>
                 <v-expand-transition v-if="categories.length > 0">

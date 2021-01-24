@@ -141,7 +141,6 @@ export default {
             // Else it updates database
             if (this.user.length === 0) {
                 this.cart.forEach((element, index) => {
-                    console.log(element)
                     if (element === item) {
                         this.$store.state.cart.cart.splice(index, 1)
                     }
@@ -211,7 +210,6 @@ export default {
                     this.$store.state.cart.cart.forEach((element) => {
                         if (element === item) {
                             if (element.items.quantity >= element.quantity + 1) {
-                                console.log("here")
                                 element.quantity = parseInt(element.quantity) + 1;
                                 api.changeCartItemQuantity(item.itemId, {quantity: quantityChange})
                             }

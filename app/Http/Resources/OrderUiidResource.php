@@ -20,6 +20,7 @@ class OrderUiidResource extends JsonResource
         return [
             'id' => $this->id,
             'UUID' => $this->UUID,
+            'status' => $this->status,
             'user' => User::find($this->userId),
             'items' => OrderResource::collection(Order::where('UUID', $this->UUID)->get()),
             'created_at' => $this->created_at

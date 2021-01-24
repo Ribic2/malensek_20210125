@@ -1,10 +1,8 @@
 @component('mail::message')
-    # Vaš paket je bil zamaknjen!
+    Obveščamo vas, da je pri vašem naročilu prišlo do zamika, zato bo po vsej verjetnosti dostavljen kasneje, kot načrtovano. Za dodatne informacije nas lahko kontaktirate na info@uniqcards.com
 
-    Vaš paket je bil zamaknjen zaradi pomanjkanja zaloge ali zaradi
-    drugih faktorjev.
-
-    Lp, Uniq Cards
+    Opravičujemo se vam za kakršnekoli nevšečnosti,
+    UniqCards
 
 @endcomponent
 

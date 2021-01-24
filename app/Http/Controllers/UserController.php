@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-
     /**
      * Changes basic user information
      * @param Request $request
@@ -58,7 +57,7 @@ class UserController extends Controller
         return response()->json(
             OrderUiidResource::collection(OrderUiid::where(
                 ['status' => 'confirmed', 'userId' => Auth::id()]
-            )->get())
+            )->get()->sortDesc())
         );
     }
 }

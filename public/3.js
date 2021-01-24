@@ -126,7 +126,7 @@ __webpack_require__.r(__webpack_exports__);
     pay: function pay() {
       var _this = this;
 
-      this.$store.state.spinner = true;
+      this.$store.commit('TOGGLE_SPINNER', true);
       return fetch('/api/execute-payment', {
         method: 'POST',
         headers: {
@@ -143,9 +143,9 @@ __webpack_require__.r(__webpack_exports__);
 
         _this.$store.commit('ADD_DATA_TO_CART', []);
       }).then(function () {
-        _this.$store.state.spinner = false;
+        _this.$store.commit('TOGGLE_SPINNER', false);
 
-        _this.$router.push('/');
+        _this.$router.push('/success');
       });
     }
   },
@@ -202,7 +202,8 @@ __webpack_require__.r(__webpack_exports__);
         });
       },
       onApprove: function onApprove(data, actions) {
-        _this.$store.state.spinner = true;
+        _this.$store.commit('TOGGLE_SPINNER', true);
+
         return fetch('/api/execute-payment', {
           method: 'POST',
           headers: {
@@ -221,9 +222,9 @@ __webpack_require__.r(__webpack_exports__);
 
           _this.$store.commit('ADD_DATA_TO_CART', []);
         }).then(function () {
-          _this.$store.state.spinner = false;
+          _this.$store.commit('TOGGLE_SPINNER', false);
 
-          _this.$router.push('/');
+          _this.$router.push('/success');
         });
       }
     }).render('#paypal-button'); // Display payment options on your web

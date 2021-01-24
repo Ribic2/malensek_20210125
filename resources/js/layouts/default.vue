@@ -152,38 +152,25 @@
             color="#6C3FB8"
             padless
         >
-            <v-container>
-                <v-row>
-                    <v-col
-                        cols="12"
-                        xl="12"
-                        lg="12"
-                    >
-                        <router-link
-                            to="/splosni-pogoji"
-                            class="text--white"
-                        >
-                            Splošni pogoji
-                        </router-link>
-                    </v-col>
-                </v-row>
-                <v-row v-for="(text, index) in legal" :key="index">
-                    <v-col
-                        cols="6"
-                        xl="2"
-                        lg="2"
-                        class="white--text">
-                        {{ text.label }}
-                    </v-col>
-                    <v-col
-                        cols="6"
-                        xl="2"
-                        lg="2"
-                        class="white--text">
-                        {{ text.value }}
-                    </v-col>
-                </v-row>
-            </v-container>
+            <v-card
+                color="#6C3FB8"
+                flat
+                tile
+                width="100%"
+                class="text-center"
+            >
+                <v-card-text>
+                    <router-link to="/opodjetju">O podjetju</router-link>
+                    <v-spacer></v-spacer>
+                    <router-link to="/splosni-pogoji">Splosni pogoji</router-link>
+                </v-card-text>
+
+                <v-divider></v-divider>
+
+                <v-card-text class="white--text">
+                    {{ new Date().getFullYear() }} © <strong>UniqCards</strong>
+                </v-card-text>
+            </v-card>
         </v-footer>
 
         <VueCookieAcceptDecline
@@ -237,17 +224,6 @@ export default {
             drawer: false,
             accountIcon: mdiAccountCircle,
             cartIcon: mdiCart,
-            legal: [
-                {label: "Trgovina", value: process.env.MIX_TRGOVINA},
-                {label: "Splošne informacije", value: process.env.MIX_TRGOVINA},
-                {label: "Tehnične informacije", value: process.env.MIX_TRGOVINA},
-                {label: "Sedež podjetja", value:process.env.MIX_TRGOVINA},
-                {label: "Naslov", value: process.env.MIX_TRGOVINA},
-                {label: "Proizvodnja", value: process.env.MIX_TRGOVINA},
-                {label: "Davčna št.", value: process.env.MIX_TRGOVINA},
-                {label: "Matična št.", value:process.env.MIX_TRGOVINA},
-                {label: "TRR", value: process.env.MIX_TRGOVINA}
-            ]
         }
     },
     methods: {
@@ -272,8 +248,8 @@ export default {
             return this.$store.dispatch('getCartGuest')
         },
 
-        setGuest(){
-          return this.$store.dispatch('setGuest')
+        setGuest() {
+            return this.$store.dispatch('setGuest')
         },
 
         callDependOnUser() {
@@ -316,7 +292,11 @@ export default {
 #logo {
     border-radius: 500px;
 }
-#mainContainer{
+
+#mainContainer {
     min-height: 86vh;
+}
+.v-card__text > a {
+    color: white;
 }
 </style>

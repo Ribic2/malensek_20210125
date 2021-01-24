@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrderUiid extends Model
 {
-    protected $fillable = ['UUID', 'userId', 'typeOfPayment', 'paymentStatus'];
+    protected $fillable = ['UUID', 'userId', 'typeOfPayment', 'paymentStatus', 'status'];
 
 
     public function user(): \Illuminate\Database\Eloquent\Relations\HasOne

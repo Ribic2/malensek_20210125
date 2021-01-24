@@ -3,8 +3,6 @@
 
     Pozdravljeni {{ $Name }} {{ $Surname }}!
 
-    Vaše naročilo je bilo sprejeto.
-
     Lp, Uniq Cards
 @endcomponent
 

@@ -6,18 +6,19 @@
             class="display-1 pl-0"
         >Kontaktirajte nas
         </v-card-title>
+
         <v-form>
             <v-text-field
                 label="Ime in priimek"
                 outlined
-                v-model="name"
+                v-model="contact.name"
             >
 
             </v-text-field>
 
             <v-text-field
                 label="E-naslov"
-                v-model="email"
+                v-model="contact.email"
                 type="email"
                 outlined
             >
@@ -27,7 +28,7 @@
             <v-textarea
                 no-resize
                 outlined
-                v-model="message"
+                v-model="contact.message"
                 height="200"
                 label="Sporočilo..."
             ></v-textarea>
@@ -38,6 +39,7 @@
                 id="submitButton"
                 color="#5635A5"
                 dark
+                :block="$vuetify.breakpoint.mobile"
                 @click="addContact()"
             >Pošlji
             </v-btn>
@@ -60,20 +62,33 @@ import api from '../../services/api'
 export default {
     data() {
         return {
-            name: '',
-            email: '',
-            message: '',
+            contact: {
+                name: '',
+                email: '',
+                message: '',
+            },
+            defaultContact:{
+                name: '',
+                email: '',
+                message: '',
+            },
             has_error: null,
             response: null
         }
     },
     methods: {
         addContact() {
-            api.sendContact({name: this.name, email: this.email, message: this.message})
+            let data = {
+                name: this.contact.name,
+                email: this.contact.email,
+                message: this.contact.message
+            }
+
+            api.sendContact(data)
                 .then((response) => {
                     this.has_error = false
-                    console.log(response.data)
                     this.response = response.data
+                    Object.assign(this.contact, this.defaultContact)
                 })
                 .catch((err) => {
                     this.has_error = true
@@ -84,10 +99,4 @@ export default {
 }
 </script>
 
-<style scoped>
-@media only screen and (max-width: 575px) {
-    #submitButton {
-        width: 100% !important;
-    }
-}
-</style>
+

@@ -31,7 +31,7 @@ export default {
                 })
             },
             onApprove: (data, actions) =>  {
-                this.$store.state.spinner = true
+                this.$store.commit('TOGGLE_SPINNER', true)
                 return fetch('/api/execute-payment', {
                     method: 'POST',
                     headers: {
@@ -51,8 +51,8 @@ export default {
                     this.$store.commit('ADD_DATA_TO_CART', [])
                 })
                 .then(()=>{
-                    this.$store.state.spinner = false
-                    this.$router.push('/')
+                    this.$store.commit('TOGGLE_SPINNER', false)
+                    this.$router.push('/success')
                 })
             }
         }).render('#paypal-button'); // Display payment options on your web

@@ -22,7 +22,7 @@
             </v-list-item>
 
             <!-- Back side of the website-->
-            <v-responsive :aspect-ratio="4/3" v-if="selected != null" class="ma-2">
+            <v-responsive :aspect-ratio="4/3" v-if="selected != null" class="ma-2" @click="selectItem(product.id)">
                 <transition name="fade" mode="out-in">
                     <v-card-text>{{ product.itemDescription.substring(0,400)+".." }}</v-card-text>
                 </transition>
@@ -33,7 +33,7 @@
             <!-- Front page of the website -->
             <v-img
                 v-else
-                @click="$router.push(`/item/${product.id}`)"
+                @click="selectItem(product.id)"
                 class="ma-2"
                 :aspect-ratio="4/3"
                 :src="`/storage${product.itemImgDir}/${product.itemImg}`"
@@ -65,7 +65,6 @@
                     :ripple="false"
                 >Izdelek je že v košarici
                 </v-btn>
-
                 <v-btn
                     v-else
                     block
@@ -79,7 +78,7 @@
             </v-card-actions>
             <p
                 class="text-center learnMoreText"
-                @click="selectItem(product.id)"
+                @click="$router.push(`/item/${product.id}`)"
             >
                 Več o izdelku...
             </p>
@@ -114,7 +113,6 @@ export default {
                     items: product,
                     quantity: 1
                 }
-
                 return this.$store.dispatch('addItemToCartGuest', data)
             } else {
                 let data = {

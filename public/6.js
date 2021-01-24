@@ -185,7 +185,9 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     // Formats item price to 2 decimal
     formatPrice: function formatPrice() {
-      this.itemPrice = this.itemPrice.match(/^\d+\.?\d{1,2}/);
+      if (this.itemPrice !== null) {
+        this.itemPrice = parseFloat(this.itemPrice).toFixed(2);
+      }
     },
     addItem: function addItem() {
       var _this = this;
@@ -730,7 +732,7 @@ var render = function() {
                             [
                               _c("v-text-field", {
                                 attrs: {
-                                  prefix: "$",
+                                  prefix: "€",
                                   label: "Cena izdelka",
                                   required: ""
                                 },

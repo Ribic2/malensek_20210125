@@ -19,6 +19,7 @@
         </v-app-bar>
 
         <v-main>
+            <SpinnerOverlay></SpinnerOverlay>
             <v-container fluid>
                 <router-view></router-view>
             </v-container>
@@ -33,7 +34,9 @@
 <script>
 
 import { mdiCardBulletedOutline, mdiOrderNumericAscending, mdiAccount, mdiContacts} from '@mdi/js'
+import SpinnerOverlay from "../components/spinnerOverlay";
 export default {
+    components: {SpinnerOverlay},
     data() {
         return {
             buttons: [

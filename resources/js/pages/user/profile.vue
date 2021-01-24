@@ -86,7 +86,11 @@
             </v-col>
         </v-row>
 
+        <v-divider></v-divider>
         <v-row>
+            <v-col cols="12">
+                <h1>Naročila</h1>
+            </v-col>
             <v-col
                 cols="12"
             >

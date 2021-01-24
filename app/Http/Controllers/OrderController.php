@@ -232,7 +232,7 @@ class OrderController extends Controller
     public function notComplete(): JsonResponse
     {
         return response()->json(
-            OrderUiidResource::collection(OrderUiid::where(['status' => 'not-reviewed'])->get())
+            OrderUiidResource::collection(OrderUiid::where(['status' => 'not-reviewed', 'status' => 'delayed'])->get())
         );
     }
 
@@ -243,7 +243,7 @@ class OrderController extends Controller
     public function latestOrders(): JsonResponse
     {
         return response()->json(
-            OrderUiidResource::collection(OrderUiid::all()->sortDesc())
+            OrderUiidResource::collection(OrderUiid::where(['status' => 'not-reviewed', 'status' => 'delayed'])->get()->sortDesc())
         );
     }
 
@@ -254,7 +254,7 @@ class OrderController extends Controller
     public function oldestOrders(): JsonResponse
     {
         return response()->json(
-            OrderUiidResource::collection(OrderUiid::all()->sortBy(['Created_at']))
+            OrderUiidResource::collection(OrderUiid::where(['status' => 'not-reviewed', 'status' => 'delayed'])->get()->sortBy(['Created_at']))
         );
     }
 
@@ -311,6 +311,15 @@ class OrderController extends Controller
     public function delayOrder(int $id): JsonResponse
     {
         $order = OrderUiid::find($id);
+
+        $order->update([
+            "status" => "delayed"
+        ]);
+
         Mail::to(User::find($order->userId)->email)->send(new orderDelayed());
+
+        return response()->json(
+            "item was delayed"
+        );
     }
 }
