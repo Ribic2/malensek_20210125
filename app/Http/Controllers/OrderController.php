@@ -232,7 +232,7 @@ class OrderController extends Controller
     public function notComplete(): JsonResponse
     {
         return response()->json(
-            OrderUiidResource::collection(OrderUiid::where(['status' => 'not-reviewed', 'status' => 'delayed'])->get())
+            OrderUiidResource::collection(OrderUiid::where('status', 'not-reviewed')->orWhere( 'status', 'delayed')->get())
         );
     }
 
@@ -243,7 +243,7 @@ class OrderController extends Controller
     public function latestOrders(): JsonResponse
     {
         return response()->json(
-            OrderUiidResource::collection(OrderUiid::where(['status' => 'not-reviewed', 'status' => 'delayed'])->get()->sortDesc())
+            OrderUiidResource::collection(OrderUiid::where('status', 'not-reviewed')->orWhere( 'status', 'delayed')->get()->sortDesc())
         );
     }
 
@@ -254,7 +254,7 @@ class OrderController extends Controller
     public function oldestOrders(): JsonResponse
     {
         return response()->json(
-            OrderUiidResource::collection(OrderUiid::where(['status' => 'not-reviewed', 'status' => 'delayed'])->get()->sortBy(['Created_at']))
+            OrderUiidResource::collection(OrderUiid::where('status', 'not-reviewed')->orWhere( 'status', 'delayed')->get()->sortBy(['Created_at']))
         );
     }
 

@@ -27,7 +27,7 @@ class orderDenied extends Mailable
      */
     public function build()
     {
-        return $this->from('mail@example.com', 'Mailtrap')
+        return $this->from(env('MAIL_FROM_ADDRESS'), 'UniqCards')
         ->subject('Vaše naročilo je bilo zavrnjeno')
         ->markdown('mails.orderDenied');
     }

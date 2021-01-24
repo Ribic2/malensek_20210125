@@ -23,10 +23,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="389efe6c-cab3-4a24-8f12-40f431228ba9" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/public/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/products/test/picture-1-test.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/products/test/picture-2-test.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/products/test/picture-PI-test.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mail/SetPasswordMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/SetPasswordMail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mail/authenticateUserMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/authenticateUserMail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mail/orderConfirmed.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/orderConfirmed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mail/orderDelayed.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/orderDelayed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mail/orderDenied.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/orderDenied.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mail/orderReceived.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/orderReceived.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mails/orderSendPDF.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mails/orderSendPDF.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -346,7 +351,7 @@
       <workItem from="1611353405277" duration="5632000" />
       <workItem from="1611407975842" duration="6698000" />
       <workItem from="1611415533584" duration="7896000" />
-      <workItem from="1611489382853" duration="13774000" />
+      <workItem from="1611489382853" duration="15779000" />
     </task>
     <servers />
   </component>

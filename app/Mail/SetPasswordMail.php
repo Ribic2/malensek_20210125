@@ -36,6 +36,6 @@ class SetPasswordMail extends Mailable
      */
     public function build()
     {
-        return $this->from('hello@email.com')->markdown('mails.user.SetPasswordMail');
+        return $this->from(env('MAIL_FROM_ADDRESS'), 'UniqCards')->markdown('mails.user.SetPasswordMail');
     }
 }

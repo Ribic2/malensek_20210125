@@ -27,7 +27,7 @@ class orderDelayed extends Mailable
      */
     public function build(): orderDelayed
     {
-        return $this->from('mail@example.com', 'Mailtrap')
+        return $this->from(env('MAIL_FROM_ADDRESS'), 'UniqCards')
             ->subject('Vaše naročilo je bilo zamaknjeno.')
             ->markdown('mails.orderDelayed');
     }
