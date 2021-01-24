@@ -340,9 +340,7 @@ var render = function() {
       _vm._v(" "),
       _c("v-divider"),
       _vm._v(" "),
-      _c("v-card-title", [_vm._v("E-pošta: test@gmail.com")]),
-      _vm._v(" "),
-      _c("v-card-title", [_vm._v("Tel. številka: 041 342 232")])
+      _c("v-card-title", [_vm._v("E-pošta: info@uniqcards.com")])
     ],
     1
   )
