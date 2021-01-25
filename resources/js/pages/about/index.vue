@@ -25,14 +25,9 @@ export default {
         return{
             legal: [
                 {label: "Trgovina", value: process.env.MIX_TRGOVINA},
-                {label: "Splošne informacije", value: process.env.MIX_TRGOVINA},
-                {label: "Tehnične informacije", value: process.env.MIX_TRGOVINA},
                 {label: "Sedež podjetja", value:process.env.MIX_TRGOVINA},
                 {label: "Naslov", value: process.env.MIX_TRGOVINA},
-                {label: "Proizvodnja", value: process.env.MIX_TRGOVINA},
-                {label: "Davčna št.", value: process.env.MIX_TRGOVINA},
-                {label: "Matična št.", value:process.env.MIX_TRGOVINA},
-                {label: "TRR", value: process.env.MIX_TRGOVINA}
+                {label: "Proizvodnja", value: process.env.MIX_TRGOVINA}
             ]
         }
     }
