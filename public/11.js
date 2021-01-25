@@ -105,6 +105,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -554,6 +560,12 @@ var render = function() {
                             ],
                             1
                           )
+                        : items.status === "denied"
+                        ? _c("v-card-title", [
+                            _vm._v(
+                              "\n                    Paket je bil zavrjen.\n                "
+                            )
+                          ])
                         : _c("v-card-title", [
                             _vm._v(
                               "\n                    Paket je bil že potrjen!\n                "

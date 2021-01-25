@@ -12,6 +12,7 @@ use App\Mail\orderReceived;
 use App\Order;
 use App\OrderUiid;
 use App\User;
+use PayPalCheckoutSdk\Core\ProductionEnvironment;
 use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
@@ -21,8 +22,6 @@ use Illuminate\Support\Str;
 // Paypal
 use PayPalCheckoutSdk\Core\PayPalHttpClient;
 use PayPalCheckoutSdk\Orders\OrdersCreateRequest;
-use PayPalCheckoutSdk\Core\SandboxEnvironment;
-
 
 class OrderController extends Controller
 {
@@ -32,10 +31,10 @@ class OrderController extends Controller
 
     public function __construct()
     {
-        $clientId = env('PAYPAL_SANDBOX_CLIENT_ID');
-        $clientSecret = env('PAYPAL_SANDBOX_CLIENT_SECRET');
+        $clientId = env('PAYPAL_LIVE_CLIENT_ID');
+        $clientSecret = env('PAYPAL_LIVE_CLIENT_SECRET');
 
-        $env = new SandboxEnvironment($clientId, $clientSecret);
+        $env = new ProductionEnvironment($clientId, $clientSecret);
         $client = new PayPalHttpClient($env);
         $this->client = $client;
     }
@@ -221,7 +220,7 @@ class OrderController extends Controller
     public function complete(): JsonResponse
     {
         return response()->json(
-            OrderUiidResource::collection(OrderUiid::where(['status' => 'confirmed'])->get())
+            OrderUiidResource::collection(OrderUiid::where(['status' => 'confirmed'])->orWhere('status', 'denied')->get())
         );
     }
 

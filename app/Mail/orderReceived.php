@@ -35,8 +35,7 @@ class orderReceived extends Mailable
      */
     public function build(): orderReceived
     {
-        return $this->from(env('MAIL_FROM_ADDRESS'), 'UniqCards')
-            ->subject('Paket prijet.')
+        return $this->subject('Paket prijet.')
             ->markdown('mails.orderReceived')
             ->with([
                 'Name' => $this->name,

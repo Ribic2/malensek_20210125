@@ -30,8 +30,7 @@ class authenticateUserMail extends Mailable
      */
     public function build()
     {
-        return $this->from(env('MAIL_FROM_ADDRESS'), 'UniqCards')
-            ->subject('Potrditev računa')
+        return $this->subject('Potrditev računa')
             ->markdown('mails.authenticateUser')
             ->with([
                 'email' => $this->email

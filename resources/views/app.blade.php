@@ -16,7 +16,7 @@
 </div>
 
 <script src="{{ asset('js/app.js') }}" defer></script>
-<script src="https://www.paypal.com/sdk/js?client-id=AdM7mP7H6PXAfX0PL8xEVN4FqmByJMtlPAiigT2hBceluf_AoZilSI6RtwZXifXHStK72dYo87M_HM8i&currency=EUR"></script>
+<script src="https://www.paypal.com/sdk/js?client-id={{ env('PAYPAL_LIVE_CLIENT_ID') }}&currency=EUR"></script>
 
 </body>
 </html>

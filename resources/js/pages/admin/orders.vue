@@ -78,9 +78,15 @@
                     <v-card-actions v-if="items.status === 'not-reviewed' || items.status === 'delayed'">
                         <v-btn @click="confirmOrder(items.id)">Potrdi</v-btn>
                         <v-btn @click="denyOrder(items.id)">Zavrni</v-btn>
+
+                        <!-- delay -->
                         <v-btn @click="delayOrder(items.id)" v-if="items.status !== 'delayed'">Zamik v dostavi</v-btn>
                         <v-btn v-else-if="items.status === 'delayed'">Dostava zamaknjena</v-btn>
                     </v-card-actions>
+
+                    <v-card-title v-else-if="items.status === 'denied'">
+                        Paket je bil zavrjen.
+                    </v-card-title>
 
                     <v-card-title v-else>
                         Paket je bil že potrjen!

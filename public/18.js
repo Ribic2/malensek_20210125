@@ -1,15 +1,14 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[18],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vuetify-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/resetPassword/ResetPasswordForm.vue?vue&type=script&lang=js&":
-/*!********************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vuetify-loader/lib/loader.js??ref--11-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/resetPassword/ResetPasswordForm.vue?vue&type=script&lang=js& ***!
-  \********************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vuetify-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/about/index.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vuetify-loader/lib/loader.js??ref--11-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/about/index.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _services_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../services/api */ "./resources/js/services/api.js");
 //
 //
 //
@@ -30,67 +29,48 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 /* harmony default export */ __webpack_exports__["default"] = ({
+  name: "index",
   data: function data() {
     return {
-      token: null,
-      email: null,
-      newPassword: null,
-      newPasswordAgain: null,
-      message: null,
-      is_error: null
+      legal: [{
+        label: "Trgovina",
+        value: "test"
+      }, {
+        label: "Splošne informacije",
+        value: "test"
+      }, {
+        label: "Tehnične informacije",
+        value: "test"
+      }, {
+        label: "Sedež podjetja",
+        value: "test"
+      }, {
+        label: "Naslov",
+        value: "test"
+      }, {
+        label: "Proizvodnja",
+        value: "test"
+      }, {
+        label: "Davčna št.",
+        value: "test"
+      }, {
+        label: "Matična št.",
+        value: "test"
+      }, {
+        label: "TRR",
+        value: "test"
+      }]
     };
-  },
-  methods: {
-    resetPasswordRequest: function resetPasswordRequest() {
-      var _this = this;
-
-      var data = {
-        token: this.$route.params.token,
-        email: this.email,
-        password: this.newPassword,
-        password_confirmation: this.newPasswordAgain
-      };
-      _services_api__WEBPACK_IMPORTED_MODULE_0__["default"].resetPassword(data).then(function (response) {
-        _this.is_error = false;
-        _this.message = response.data.message;
-      })["catch"](function (err) {
-        _this.is_error = true;
-        _this.message = err.response.data.errors;
-      });
-    }
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vuetify-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/resetPassword/ResetPasswordForm.vue?vue&type=template&id=9772fba0&":
-/*!************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vuetify-loader/lib/loader.js??ref--11-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/resetPassword/ResetPasswordForm.vue?vue&type=template&id=9772fba0& ***!
-  \************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vuetify-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/about/index.vue?vue&type=template&id=a7d24612&scoped=true&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vuetify-loader/lib/loader.js??ref--11-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/about/index.vue?vue&type=template&id=a7d24612&scoped=true& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -103,114 +83,50 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-card",
-    { staticClass: "mx-auto mt-12", attrs: { width: "500", height: "500" } },
+    "v-container",
     [
-      _c("v-card-title", [_vm._v("Spremeni geslo")]),
-      _vm._v(" "),
       _c(
-        "v-card-text",
+        "v-row",
         [
           _c(
-            "v-form",
+            "v-col",
+            { attrs: { cols: "12" } },
             [
-              _c("v-text-field", {
-                attrs: { placeholder: "Email", type: "email" },
-                model: {
-                  value: _vm.email,
-                  callback: function($$v) {
-                    _vm.email = $$v
-                  },
-                  expression: "email"
-                }
-              }),
-              _vm._v(" "),
-              _c("v-text-field", {
-                attrs: { placeholder: "Novo geslo", type: "password" },
-                model: {
-                  value: _vm.newPassword,
-                  callback: function($$v) {
-                    _vm.newPassword = $$v
-                  },
-                  expression: "newPassword"
-                }
-              }),
-              _vm._v(" "),
-              _c("v-text-field", {
-                attrs: { placeholder: "Ponovno novo geslo", type: "password" },
-                model: {
-                  value: _vm.newPasswordAgain,
-                  callback: function($$v) {
-                    _vm.newPasswordAgain = $$v
-                  },
-                  expression: "newPasswordAgain"
-                }
-              }),
-              _vm._v(" "),
               _c(
-                "v-btn",
-                {
-                  attrs: { block: "", color: "primary" },
-                  on: { click: _vm.resetPasswordRequest }
-                },
-                [_vm._v("\n                Spremeni geslo\n            ")]
+                "v-card",
+                [
+                  _c("v-card-title", [_vm._v("Informacije o podjetju")]),
+                  _vm._v(" "),
+                  _vm._l(_vm.legal, function(text, index) {
+                    return _c(
+                      "v-row",
+                      { key: index, staticClass: "ma-2" },
+                      [
+                        _c("v-col", [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(text.label) +
+                              "\n                    "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("v-col", [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(text.value) +
+                              "\n                    "
+                          )
+                        ])
+                      ],
+                      1
+                    )
+                  })
+                ],
+                2
               )
             ],
             1
-          ),
-          _vm._v(" "),
-          _vm.message
-            ? _c(
-                "v-alert",
-                {
-                  staticClass: "mt-3",
-                  attrs: { type: _vm.is_error ? "error" : "success" }
-                },
-                [
-                  _vm.message.email != null
-                    ? _c(
-                        "div",
-                        _vm._l(_vm.message.email, function(message) {
-                          return _c("p", [
-                            _vm._v(
-                              "\n                    " +
-                                _vm._s(message) +
-                                "\n                "
-                            )
-                          ])
-                        }),
-                        0
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.message.password != null
-                    ? _c(
-                        "div",
-                        _vm._l(_vm.message.password, function(message) {
-                          return _c("p", [
-                            _vm._v(
-                              "\n                    " +
-                                _vm._s(message) +
-                                "\n                "
-                            )
-                          ])
-                        }),
-                        0
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  !_vm.is_error
-                    ? _c("p", [
-                        _vm._v(
-                          "\n                " +
-                            _vm._s(_vm.message) +
-                            "\n            "
-                        )
-                      ])
-                    : _vm._e()
-                ]
-              )
-            : _vm._e()
+          )
         ],
         1
       )
@@ -255,25 +171,22 @@ module.exports = function installComponents (component, components) {
 
 /***/ }),
 
-/***/ "./resources/js/pages/resetPassword/ResetPasswordForm.vue":
-/*!****************************************************************!*\
-  !*** ./resources/js/pages/resetPassword/ResetPasswordForm.vue ***!
-  \****************************************************************/
+/***/ "./resources/js/pages/about/index.vue":
+/*!********************************************!*\
+  !*** ./resources/js/pages/about/index.vue ***!
+  \********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ResetPasswordForm_vue_vue_type_template_id_9772fba0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ResetPasswordForm.vue?vue&type=template&id=9772fba0& */ "./resources/js/pages/resetPassword/ResetPasswordForm.vue?vue&type=template&id=9772fba0&");
-/* harmony import */ var _ResetPasswordForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ResetPasswordForm.vue?vue&type=script&lang=js& */ "./resources/js/pages/resetPassword/ResetPasswordForm.vue?vue&type=script&lang=js&");
+/* harmony import */ var _index_vue_vue_type_template_id_a7d24612_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.vue?vue&type=template&id=a7d24612&scoped=true& */ "./resources/js/pages/about/index.vue?vue&type=template&id=a7d24612&scoped=true&");
+/* harmony import */ var _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.vue?vue&type=script&lang=js& */ "./resources/js/pages/about/index.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 /* harmony import */ var _node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vuetify-loader/lib/runtime/installComponents.js */ "./node_modules/vuetify-loader/lib/runtime/installComponents.js");
 /* harmony import */ var _node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var vuetify_lib_components_VAlert__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuetify/lib/components/VAlert */ "./node_modules/vuetify/lib/components/VAlert/index.js");
-/* harmony import */ var vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuetify/lib/components/VBtn */ "./node_modules/vuetify/lib/components/VBtn/index.js");
-/* harmony import */ var vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuetify/lib/components/VCard */ "./node_modules/vuetify/lib/components/VCard/index.js");
-/* harmony import */ var vuetify_lib_components_VForm__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuetify/lib/components/VForm */ "./node_modules/vuetify/lib/components/VForm/index.js");
-/* harmony import */ var vuetify_lib_components_VTextField__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuetify/lib/components/VTextField */ "./node_modules/vuetify/lib/components/VTextField/index.js");
+/* harmony import */ var vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuetify/lib/components/VCard */ "./node_modules/vuetify/lib/components/VCard/index.js");
+/* harmony import */ var vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuetify/lib/components/VGrid */ "./node_modules/vuetify/lib/components/VGrid/index.js");
 
 
 
@@ -282,12 +195,12 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _ResetPasswordForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _ResetPasswordForm_vue_vue_type_template_id_9772fba0___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _ResetPasswordForm_vue_vue_type_template_id_9772fba0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _index_vue_vue_type_template_id_a7d24612_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _index_vue_vue_type_template_id_a7d24612_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  null,
+  "a7d24612",
   null
   
 )
@@ -299,45 +212,43 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 
 
-
-
-_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3___default()(component, {VAlert: vuetify_lib_components_VAlert__WEBPACK_IMPORTED_MODULE_4__["VAlert"],VBtn: vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_5__["VBtn"],VCard: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_6__["VCard"],VCardText: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_6__["VCardText"],VCardTitle: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_6__["VCardTitle"],VForm: vuetify_lib_components_VForm__WEBPACK_IMPORTED_MODULE_7__["VForm"],VTextField: vuetify_lib_components_VTextField__WEBPACK_IMPORTED_MODULE_8__["VTextField"]})
+_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3___default()(component, {VCard: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_4__["VCard"],VCardTitle: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_4__["VCardTitle"],VCol: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_5__["VCol"],VContainer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_5__["VContainer"],VRow: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_5__["VRow"]})
 
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/pages/resetPassword/ResetPasswordForm.vue"
+component.options.__file = "resources/js/pages/about/index.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/pages/resetPassword/ResetPasswordForm.vue?vue&type=script&lang=js&":
-/*!*****************************************************************************************!*\
-  !*** ./resources/js/pages/resetPassword/ResetPasswordForm.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************************/
+/***/ "./resources/js/pages/about/index.vue?vue&type=script&lang=js&":
+/*!*********************************************************************!*\
+  !*** ./resources/js/pages/about/index.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ResetPasswordForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vuetify-loader/lib/loader.js??ref--11-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ResetPasswordForm.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vuetify-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/resetPassword/ResetPasswordForm.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ResetPasswordForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vuetify-loader/lib/loader.js??ref--11-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vuetify-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/about/index.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/pages/resetPassword/ResetPasswordForm.vue?vue&type=template&id=9772fba0&":
-/*!***********************************************************************************************!*\
-  !*** ./resources/js/pages/resetPassword/ResetPasswordForm.vue?vue&type=template&id=9772fba0& ***!
-  \***********************************************************************************************/
+/***/ "./resources/js/pages/about/index.vue?vue&type=template&id=a7d24612&scoped=true&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/pages/about/index.vue?vue&type=template&id=a7d24612&scoped=true& ***!
+  \***************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ResetPasswordForm_vue_vue_type_template_id_9772fba0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vuetify-loader/lib/loader.js??ref--11-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ResetPasswordForm.vue?vue&type=template&id=9772fba0& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vuetify-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/resetPassword/ResetPasswordForm.vue?vue&type=template&id=9772fba0&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ResetPasswordForm_vue_vue_type_template_id_9772fba0___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_a7d24612_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vuetify-loader/lib/loader.js??ref--11-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=template&id=a7d24612&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vuetify-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/about/index.vue?vue&type=template&id=a7d24612&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_a7d24612_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ResetPasswordForm_vue_vue_type_template_id_9772fba0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_a7d24612_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

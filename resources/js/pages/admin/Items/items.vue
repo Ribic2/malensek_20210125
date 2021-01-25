@@ -50,8 +50,8 @@
                         <v-col>
                             {{ item.itemName }}
                         </v-col>
-                        <v-col>
-                            <p v-if="item.Quantity == 0">Izdelka ni več na zalogi.</p>
+                        <v-col v-if="item.quantity <= 0">
+                            <p>Izdelka ni več na zalogi.</p>
                         </v-col>
                     </v-row>
                 </v-expansion-panel-header>

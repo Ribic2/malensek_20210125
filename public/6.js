@@ -1297,11 +1297,11 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _c("v-col", [
-                        item.Quantity == 0
-                          ? _c("p", [_vm._v("Izdelka ni več na zalogi.")])
-                          : _vm._e()
-                      ])
+                      item.quantity <= 0
+                        ? _c("v-col", [
+                            _c("p", [_vm._v("Izdelka ni več na zalogi.")])
+                          ])
+                        : _vm._e()
                     ],
                     1
                   )

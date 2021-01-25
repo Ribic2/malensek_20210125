@@ -39,8 +39,7 @@ class orderConfirmed extends Mailable
      */
     public function build(): orderConfirmed
     {
-        return $this->from(env('MAIL_FROM_ADDRESS'), 'UniqCards')
-            ->subject('Naročilo je bilo prejeto.')
+        return $this->subject('Naročilo je bilo prejeto.')
             ->markdown('mails.orderSend')
             ->with([
                 "Name" => $this->name,
