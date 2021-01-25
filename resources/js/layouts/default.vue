@@ -94,7 +94,7 @@
         >
             <v-app-bar-nav-icon>
                 <v-img
-                    @click="$route.name !== '/' ? $router.push('/') : null"
+                    @click="$route.path !== '/'? $router.push('/') : ''"
                     src="/storage/store/FullColor_1280x1024_300dpi.jpg"
                     width="2"
                     height="48"
