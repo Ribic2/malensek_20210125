@@ -2,8 +2,10 @@
     # Potrditev paketa!
 
     Pozdravljeni {{ $Name }} {{ $Surname }}!
-
-    Lp, Uniq Cards
+   
+    Obvestili vas bomo takoj, ko pošiljko odpošljemo.
+    
+    Zahvaljujemo se vam za vaš nakup, UniqCards!
 @endcomponent
 
 @yield('mail::footer')
