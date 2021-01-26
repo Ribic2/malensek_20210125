@@ -131,6 +131,14 @@ export default {
         return instance.post('/api/item/add', data)
     },
 
+    deleteItem(id){
+        return instance.delete(`/api/item/${id}/delete`)
+    },
+
+    getAllCategories(){
+      return instance.get('/api/categories/all')
+    },
+
     /**
      * Sends request to change data
      * @param data

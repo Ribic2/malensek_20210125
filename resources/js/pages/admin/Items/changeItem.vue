@@ -106,6 +106,10 @@ export default {
             .then((response)=>{
                 this.$store.dispatch('getItems')
                 this.$store.state.admin.changeItem_Dialog = false;
+
+                this.$store.state.admin.responseText = "Izdelek spremenjen!"
+                this.$store.state.admin.responseType = true
+                this.$store.state.admin.responseStatus = true
             })
         }
     },

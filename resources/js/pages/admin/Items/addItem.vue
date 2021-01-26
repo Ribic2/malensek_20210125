@@ -63,7 +63,7 @@
                             </v-col>
                             <v-col>
                                 <v-select
-                                    :items="subCategory"
+                                    :items="categories"
                                     v-model="category"
                                     label="Kategorija"
                                     :disabled="!!addNewCategory"
@@ -91,6 +91,7 @@
                             label="File input"
                             required
                             multiple
+                            clearable
                             @click:clear="deleteImages"
                             @change="previewImages"
                         ></v-file-input>
@@ -162,17 +163,16 @@ export default {
             quantity: null,
             color: null,
 
-            subCategory: [
-                "Unikat artikli",
-                "Redni artikli"
-            ],
             images: [],
             addNewCategory: false,
 
             // For preview
             showImages: [],
             primaryImage: [],
-            errorMessage: ''
+            errorMessage: '',
+
+            // categories
+            categories: ["Unikat artikli","Redni artikli"],
         }
     },
     methods: {
@@ -182,7 +182,17 @@ export default {
                 this.itemPrice = parseFloat(this.itemPrice).toFixed(2)
             }
         },
+        getCategories(){
+            api.getAllCategories()
+                .then((response)=>{
+                    this.categories = ["Unikat artikli","Redni artikli"]
+                    response.data.forEach(arr=>{
+                        this.categories.push(arr.categories)
+                    })
+                })
+        },
         addItem() {
+            this.$store.state.spinner = true
             Axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
             // Creates form data for image upload
             const fd = new FormData()
@@ -209,14 +219,20 @@ export default {
                 this.customCategory = null
                 this.quantity = null
                 this.color = null
+                this.addNewCategory = false
 
                 this.deleteImages()
+                this.getCategories()
 
                 this.errorMessage = ''
-                this.$store.state.admin.addItemText = response.data
-                this.$store.state.admin.responseAddItem = true
+                // response
+                this.$store.state.admin.responseText = response.data
+                this.$store.state.admin.responseType = true
+                this.$store.state.admin.responseStatus = true
+
                 this.$store.state.admin.addItemDialog = false
 
+                this.$store.state.spinner = false
                 return this.$store.dispatch('getItems')
             })
                 .catch((err) => {
@@ -240,6 +256,9 @@ export default {
             this.images = []
             this.showImages = []
         }
+    },
+    mounted() {
+        this.getCategories()
     }
 }
 </script>

@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" href="/storage/store/favicon-16x16.png" type="image/gif" sizes="16x16">
+    <meta name="google-site-verification" content="0NmhldSwMV4Oy1i_KQywHKpLJpSEmIVAWMQcVflO8go" />
+    <meta name="description" content="UniqCards offers unique greeting cards to celebrate every occasion, weddings, birthdays, holidays, you name it! You can also request a card to be personalized to your needs and whishes and we will make sure that you get the perfect greeting card in the right time!">
+    <link rel="icon" href="/storage/app/public/store/favicon-16x16.png" type="image/gif" sizes="16x16">
     <title>Uniq Cards</title>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Item;
 use App\ItemReview;
+use App\Order;
+use App\Cart;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,8 +13,6 @@ use Illuminate\Support\Facades\Storage;
 
 class ItemController extends Controller
 {
-
-
     /**
      * READE ME
      * Image naming convention for primary image and images is
@@ -27,16 +27,16 @@ class ItemController extends Controller
      * @param $name
      * @param $primaryImage
      */
-    public function uploadImageAndCreateFolder($images, $name, $primaryImage)
+    public function uploadImageAndCreateFolder($images, $name, $primaryImage, $id)
     {
         // Inserts primary image
-        $primaryImage->storeAs('/public/products/' . $name, "picture-PI-" . $name . ".jpg");
+        $primaryImage->storeAs('/public/products/' . $id, "picture-PI-" . $name . ".jpg");
 
         // Creates folder
-        Storage::makeDirectory('/public/products/' . $name);
+        Storage::makeDirectory('/public/products/' . $id);
         foreach ($images as $index => $image) {
             if ($image != $primaryImage) {
-                $image->storeAs('/public/products/' . $name, "picture-" . $index . "-" . $name . ".jpg");
+                $image->storeAs('/public/products/' . $id, "picture-" . $index . "-" . $name . ".jpg");
             }
         }
     }
@@ -76,7 +76,6 @@ class ItemController extends Controller
         $item = Item::create([
             "itemName" => $request->input('itemName'),
             "itemImg" => "picture-PI-" . $request->input('itemName') . ".jpg",
-            "itemImgDir" => '/products/' . $request->input('itemName'),
             "itemPrice" => $request->input('itemPrice'),
             "itemDescription" => $request->input('itemDescription'),
             "quantity" => $request->input('quantity'),
@@ -84,7 +83,11 @@ class ItemController extends Controller
             "colors" => $request->input('color'),
             "dimensions" => $request->input('dimensions'),
             "defaultItemPrice" => $request->input('itemPrice')
-        ])->save();
+        ]);
+
+        $item->save();
+
+        $item->update(["itemImgDir" => '/products/' . $item->id]);
 
         if (!$item) {
            abort(400, "There was an error adding an item!");
@@ -93,10 +96,35 @@ class ItemController extends Controller
         $this->uploadImageAndCreateFolder(
             $request->file('images'),
             $request->input('itemName'),
-            $request->file('primaryImage')
+            $request->file('primaryImage'),
+            $item->id
         );
 
         return response()->json("Item was created");
+    }
+
+    public function deleteItem(int $id): JsonResponse
+    {
+        // Checks if item was ordered or is in cart
+        if(Cart::where('itemId', $id)->count() > 0 || Order::where('itemId', $id)->count() > 0){
+            abort(400, "Item was already orderd or is in cart");
+        }
+
+        // Deletes item
+        $item = Item::find($id);
+        $item->delete();
+
+        // Deletes folder
+        $files = Storage::allFiles('/public'.$item->itemImgDir);
+        foreach ($files as $file){
+            Storage::delete($file);
+        }
+
+        Storage::deleteDirectory('/public'.$item->itemImgDir);
+
+        return response()->json(
+            $files
+        );
     }
 
     /**
@@ -105,7 +133,7 @@ class ItemController extends Controller
      */
     public function getItems(): JsonResponse
     {
-        return response()->json(Item::all());
+        return response()->json(Item::latest()->get());
     }
 
     /**
@@ -171,13 +199,13 @@ class ItemController extends Controller
         /*
          * If name of the item was changes it checks if directory with that name already exists,
          */
-        if (!Storage::exists('/public/products/' . $request->input('itemName'))) {
+        /*if (!Storage::exists('/public/products/' . $request->input('itemName'))) {
             Storage::move('/public/' . $item->itemImgDir, '/public/products/' . $request->input('itemName'));
             Storage::move(
                 '/public/products/' . $request->input('itemName') . '/' . $item->itemImg,
                 '/public/products/' . $request->input('itemName') . '/picture-PI-' . $request->input('itemName') . '.jpg'
             );
-        }
+        }*/
 
         // Changes item price
         $this->changeItemPrice(
@@ -191,17 +219,9 @@ class ItemController extends Controller
         Item::where('id', $id)->update([
             "itemName" => $request->input('itemName'),
             "quantity" => $request->input('quantity'),
-            "itemImgDir" => "/products/" . $request->input('itemName'),
-            "itemImg" => "picture-PI-" . $request->input('itemName') . ".jpg",
             "itemDescription" => $request->input('itemDescription'),
             "isOnSale" => $request->input('isOnSale') == false ? 0 : 1,
             "discount" => $request->input('discount'),
-
-            /*"defaultItemPrice" => $request->input('itemPrice') == $item->defaultItemPrice && $request->input('isOnSale') == false ?
-                $item->defaultItemPrice : $request->input('itemPrice'),
-
-            "itemPrice" => $request->input('isOnSale') == false ? $price :
-                (int)$request->input('itemPrice') - (($request->input('discount') * $request->input('itemPrice')) / 100)*/
         ]);
 
         // Sends response
@@ -226,8 +246,26 @@ class ItemController extends Controller
      */
     public function getCategories(): JsonResponse
     {
+        (array)$categoriesReturn = [];
+       $categories = Item::distinct('categories')->get('categories');
+
+        foreach ($categories as $category){
+            $items = Item::where(['categories' => $category->categories, 'delisted' => 0])->count();
+            array_push($categoriesReturn, (object)["category" => $category->categories, "count" => $items]);
+        }
         return response()->json(
-            Item::where(['delisted' => 0])->distinct('categories')->get('categories')
+            $categoriesReturn
+        );
+    }
+
+    /**
+     * Gets all categories (for admin page)
+     * @return JsonResponse
+     */
+    public function getAllCategories(): JsonResponse
+    {
+        return response()->json(
+            Item::distinct('categories')->get('categories')
         );
     }
 
@@ -265,7 +303,7 @@ class ItemController extends Controller
     public function getItemsPerCategoryPerPage(int $page, int $categoryId): JsonResponse
     {
         return response()->json(
-            Item::where('category', $categoryId)->paginate(10)
+            Item::where(['category' => $categoryId,  'delisted' => 0,])->get()
         );
     }
 
@@ -314,7 +352,7 @@ class ItemController extends Controller
     public function getSpecificItems(Request $request): JsonResponse
     {
         return response()->json(
-            Item::where('categories', $request->input('category'))->get()
+            Item::where(['categories' => $request->input('category'), 'delisted' => 0])->get()
         );
     }
 

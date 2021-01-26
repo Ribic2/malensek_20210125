@@ -84,6 +84,7 @@ Route::middleware('auth:api')->group(function (){
     Route::get('/items/delisted', 'ItemController@delistedItems')->middleware('check.admin');
     Route::get('/items/listed', 'ItemController@listedItems')->middleware('check.admin');
     Route::get('/items', 'ItemController@getItems')->middleware('check.admin');
+    Route::delete('/item/{id}/delete', 'ItemController@deleteItem')->middleware('check.admin');
 
     Route::get('/orders', 'OrderController@getOrders')->middleware('check.admin');
     Route::get('/orders/complete', 'OrderController@complete')->middleware('check.admin');
@@ -96,6 +97,7 @@ Route::middleware('auth:api')->group(function (){
     Route::patch('/order/{id}/delay', 'OrderController@delayOrder')->middleware('check.admin');
 
 
+    Route::get('/categories/all', 'ItemController@getAllCategories')->middleware('check.admin');
     Route::post('/item/add', 'ItemController@addItem')->middleware('check.admin');
 
     Route::get('/user/all', 'AuthController@getAllUsers')->middleware('check.admin');

@@ -99651,7 +99651,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     children: [{
       path: '',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! ../pages/admin/Items/items.vue */ "./resources/js/pages/admin/Items/items.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(5)]).then(__webpack_require__.bind(null, /*! ../pages/admin/Items/items.vue */ "./resources/js/pages/admin/Items/items.vue"));
       }
     }, {
       path: 'orders',
@@ -99731,7 +99731,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     }, {
       path: '/profile',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(5)]).then(__webpack_require__.bind(null, /*! ../pages/user/profile.vue */ "./resources/js/pages/user/profile.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! ../pages/user/profile.vue */ "./resources/js/pages/user/profile.vue"));
       },
       beforeEnter: function beforeEnter(to, from, next) {
         _services_api__WEBPACK_IMPORTED_MODULE_2__["default"].getUsersData().then(function (response) {
@@ -99952,6 +99952,12 @@ var instance = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
    */
   addItem: function addItem(data) {
     return instance.post('/api/item/add', data);
+  },
+  deleteItem: function deleteItem(id) {
+    return instance["delete"]("/api/item/".concat(id, "/delete"));
+  },
+  getAllCategories: function getAllCategories() {
+    return instance.get('/api/categories/all');
   },
 
   /**
@@ -100273,10 +100279,15 @@ __webpack_require__.r(__webpack_exports__);
       orders: [],
       // Dialogs for items
       addItemDialog: false,
-      addItemText: null,
-      responseAddItem: false,
+      // Response
+      responseText: null,
+      responseStatus: false,
+      responseType: null,
       // Change item
-      changeItem_Dialog: false
+      changeItem_Dialog: false,
+      // Delete item
+      deleteItemDialog: false,
+      deleteItemId: null
     };
   },
   mutations: {
@@ -100285,6 +100296,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     GET_ORDERS: function GET_ORDERS(state, payload) {
       state.orders = payload;
+    },
+    TOGGLE_DELETE: function TOGGLE_DELETE(state, payload) {
+      state.deleteItemDialog = payload;
     },
     CHANGE_ITEM_DIALOG: function CHANGE_ITEM_DIALOG(state, payload) {
       state.changeItem_Dialog = payload;
@@ -100764,8 +100778,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuetify_lib__WEBPACK_IMPORTED_MOD
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/vid/Desktop/Projects/Trgovina/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/vid/Desktop/Projects/Trgovina/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/vid/Desktop/Projects/malensek_20210125/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/vid/Desktop/Projects/malensek_20210125/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

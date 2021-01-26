@@ -19,7 +19,7 @@ class CreateItemTable extends Migration
             $table->double('itemPrice', 100, 2);
             $table->double('defaultItemPrice', 100,2);
             $table->string('itemImg');
-            $table->string('itemImgDir');
+            $table->string('itemImgDir')->nullable($value=true);
             $table->integer('discount')->default(0);;
             $table->boolean('isOnSale')->default(false);
             $table->mediumText('itemDescription');

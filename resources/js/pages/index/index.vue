@@ -76,7 +76,7 @@ export default {
     data() {
         return {
             show: false,
-            categories: [],
+            categories: [{"categories":"Unikat artikli"}, {"categories": "Redni artikli"}],
             selectedItem: null,
 
             filterEnabled: mdiChevronDown,
@@ -90,7 +90,12 @@ export default {
         getCategories() {
             api.getCategories()
             .then((response)=>{
-                this.categories = response.data
+                response.data.forEach(arr=>{
+                    console.log(arr.count)
+                    if(arr.category !== "Unikat artikli" && arr.category !== 'Redni artikli' && arr.count > 0){
+                        this.categories.push({"categories": arr.category})
+                    }
+                })
             })
         },
 

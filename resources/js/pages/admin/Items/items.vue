@@ -62,34 +62,27 @@
                     <p v-if="item.Delisted === 0">Trenutno v prodaji</p>
                     <p v-else-if="item.Delisted === 1">Ni v prodaji</p>
 
-                    <v-row>
-                        <v-col
-                            cols="12"
-                            xl=4
-                            lg="4"
-                            md="4"
-                        >
+                    <v-card :elevation="0">
+                        <v-card-actions>
                             <v-btn
-                                width="100%"
                                 @click="changeItem(item)"
                             >Spremeni
                             </v-btn>
-                        </v-col>
-                        <v-col
-                            xl=4
-                            cols="12"
-                            lg="4"
-                            md="4"
-                        >
+
                             <v-btn
                                 @click="changeStatus(item.id)"
-                                width="100%"
                             >
                                 {{ item.delisted ? 'Vrni v prodajo' : 'Umakni iz prodaje'}}
                             </v-btn>
-
-                        </v-col>
-                    </v-row>
+                            <v-btn
+                                icon
+                                @click="deleteItem(item.id)"
+                                color="red"
+                            >
+                                <v-icon>{{mdiDelete}}</v-icon>
+                            </v-btn>
+                        </v-card-actions>
+                    </v-card>
                 </v-expansion-panel-content>
 
             </v-expansion-panel>
@@ -100,6 +93,9 @@
 
         <!-- Dialog for adding item-->
         <add-item></add-item>
+
+        <!-- Delete item dialog -->
+        <delete-item/>
 
         <!--Add new item-->
         <v-bottom-navigation
@@ -116,9 +112,9 @@
         </v-bottom-navigation>
 
         <v-snackbar
-            color="success"
-            v-model="$store.state.admin.responseAddItem">
-            {{ $store.state.admin.addItemText }}
+            :color="$store.state.admin.responseType ? 'success' : 'error'"
+            v-model="$store.state.admin.responseStatus">
+            {{ $store.state.admin.responseText }}
         </v-snackbar>
     </v-container>
 </template>
@@ -128,16 +124,20 @@
 import addItem from "./addItem";
 import changeItem from "./changeItem";
 import api from "../../../services/api";
+import deleteItem from "./deleteItem";
 
-import {mdiPlus, mdiClose, mdiCheck, mdiAllInclusive} from '@mdi/js'
+import {mdiDelete, mdiPlus, mdiClose, mdiCheck, mdiAllInclusive} from '@mdi/js'
 
 export default {
     components: {
+        deleteItem,
         addItem,
         changeItem
     },
     data() {
         return {
+            mdiDelete,
+            //icons
             selectedItem: null,
             search: null,
             snackbar: true,
@@ -153,6 +153,11 @@ export default {
     methods: {
         getAllItems() {
             return this.$store.dispatch('getItems')
+        },
+
+        deleteItem(id){
+            this.$store.commit('TOGGLE_DELETE', true)
+            this.$store.state.deleteItemId = id
         },
 
         getDelistedItems() {

@@ -8,11 +8,17 @@ export default{
 
         // Dialogs for items
         addItemDialog: false,
-        addItemText: null,
-        responseAddItem: false,
 
+        // Response
+        responseText: null,
+        responseStatus: false,
+        responseType: null,
         // Change item
         changeItem_Dialog: false,
+
+        // Delete item
+        deleteItemDialog: false,
+        deleteItemId: null,
     }),
     mutations:{
         GET_ITEMS(state, payload){
@@ -21,7 +27,9 @@ export default{
         GET_ORDERS(state, payload){
             state.orders = payload
         },
-
+        TOGGLE_DELETE(state, payload){
+            state.deleteItemDialog = payload
+        },
         CHANGE_ITEM_DIALOG(state, payload){
             state.changeItem_Dialog = payload
         }
