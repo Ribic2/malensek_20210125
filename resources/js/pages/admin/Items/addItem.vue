@@ -192,7 +192,7 @@ export default {
                 })
         },
         addItem() {
-            this.$store.state.spinner = true
+            this.$store.commit('TOGGLE_SPINNER', true)
             Axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
             // Creates form data for image upload
             const fd = new FormData()
@@ -232,7 +232,7 @@ export default {
 
                 this.$store.state.admin.addItemDialog = false
 
-                this.$store.state.spinner = false
+                this.$store.commit('TOGGLE_SPINNER', false)
                 return this.$store.dispatch('getItems')
             })
                 .catch((err) => {
