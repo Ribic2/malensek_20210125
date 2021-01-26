@@ -5,6 +5,9 @@
         height="600"
     >
         <v-card>
+            <v-overlay v-if="spinner">
+                <v-progress-circular indeterminate size="64"></v-progress-circular>
+            </v-overlay>
             <v-card-title class="headline">Dodajanje izdelka</v-card-title>
             <v-card-actions>
                 <v-container>
@@ -171,6 +174,8 @@ export default {
             primaryImage: [],
             errorMessage: '',
 
+            spinner: false,
+
             // categories
             categories: ["Unikat artikli","Redni artikli"],
         }
@@ -192,7 +197,7 @@ export default {
                 })
         },
         addItem() {
-            this.$store.commit('TOGGLE_SPINNER', true)
+            this.spinner = true
             Axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
             // Creates form data for image upload
             const fd = new FormData()
@@ -232,11 +237,12 @@ export default {
 
                 this.$store.state.admin.addItemDialog = false
 
-                this.$store.commit('TOGGLE_SPINNER', false)
+                this.spinner = false
                 return this.$store.dispatch('getItems')
             })
                 .catch((err) => {
                     this.errorMessage = err.response.data.message
+                    this.spinner = false
                 })
         },
         // Adds files to images array

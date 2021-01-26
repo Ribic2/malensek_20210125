@@ -27,7 +27,6 @@
                     <v-card-text>{{ product.itemDescription.substring(0,400)+".." }}</v-card-text>
                 </transition>
                 <v-card-text>Cena &euro;{{ product.itemPrice }}</v-card-text>
-                <v-card-text>test {{ product.id }}</v-card-text>
             </v-responsive>
 
             <!-- Front page of the website -->

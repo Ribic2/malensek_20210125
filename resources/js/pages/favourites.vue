@@ -5,13 +5,14 @@
 
         <v-row v-else>
             <v-col
-                v-for="product in favourites" v-bind:key="product.id"
+                v-for="(product, index) in favourites" v-bind:key="index"
                 cols="12"
                 xl="3"
                 lg="6"
                 md="6"
             >
-                <item v-bind:product="product.items"></item>
+                <item v-bind:product="product.items" v-if="$store.state.user.user !== null"></item>
+                <item v-bind:product="product" v-else></item>
             </v-col>
         </v-row>
     </v-container>

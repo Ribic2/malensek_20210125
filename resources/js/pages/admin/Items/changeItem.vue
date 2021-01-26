@@ -63,7 +63,7 @@
                 <v-btn
                     color="green darken-1"
                     text
-                    @click="$store.state.admin.changeItemDialog = false"
+                    @click="cancel"
                 >
                     Preklici
                 </v-btn>
@@ -111,6 +111,9 @@ export default {
                 this.$store.state.admin.responseType = true
                 this.$store.state.admin.responseStatus = true
             })
+        },
+        cancel(){
+            this.$store.commit('CHANGE_ITEM_DIALOG', false)
         }
     },
 }

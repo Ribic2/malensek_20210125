@@ -23,10 +23,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="389efe6c-cab3-4a24-8f12-40f431228ba9" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/layouts/default.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/layouts/default.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/admin/Items/addItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/admin/Items/addItem.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/admin/Items/changeItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/admin/Items/changeItem.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/favourites.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/favourites.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/index/Item.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/index/Item.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -351,7 +352,9 @@
       <workItem from="1611415533584" duration="7896000" />
       <workItem from="1611489382853" duration="18875000" />
       <workItem from="1611562106815" duration="3728000" />
-      <workItem from="1611652043785" duration="15521000" />
+      <workItem from="1611652043785" duration="16653000" />
+      <workItem from="1611681886460" duration="4000" />
+      <workItem from="1611682370319" duration="1256000" />
     </task>
     <servers />
   </component>
@@ -381,7 +384,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/resources/js/pages/about/index.vue</url>
           <line>10</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
