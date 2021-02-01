@@ -9,6 +9,7 @@ use App\Mail\orderConfirmed;
 use App\Mail\orderDelayed;
 use App\Mail\orderDenied;
 use App\Mail\orderReceived;
+use App\Mail\OrderReminder;
 use App\Order;
 use App\OrderUiid;
 use App\User;
@@ -191,10 +192,17 @@ class OrderController extends Controller
             }
         }
 
+        // Sends email to user
         Mail::to($user->email)->send(new orderReceived(
             $user->Name,
             $user->Surname,
             $this->createPDF($UUID)
+        ));
+
+        // Sends email to seller
+        Mail::to(env('MAIL_FROM_ADDRESS'))->send(new OrderReminder(
+            $user->Name,
+            $user->Surname,
         ));
 
         return response()->json([
