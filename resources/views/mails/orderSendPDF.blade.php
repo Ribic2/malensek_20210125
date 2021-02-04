@@ -28,9 +28,7 @@
             <th>Znesek</th>
             <th>Količina</th>
             <th>Popust</th>
-            <th>DDV</th>
             <th>Skupaj</th>
-            <th>Z DDV</th>
         </tr>
         </thead>
         <tbody>
@@ -45,8 +43,6 @@
                 @else
                     <td>{{ $obj->items->discount }}%</td>
                 @endif
-                <td>{{ env('MIX_DDV') }}%</td>
-                <td>{{ $obj->items->itemPrice * $obj->quantity - (($obj->items->itemPrice * $obj->quantity * env('MIX_DDV')) / 100) }}&euro;</td>
                 <td>{{  $obj->items->itemPrice * $obj->quantity }}</td>
             </tr>
             {{  $counter+=$obj->items->itemPrice * $obj->quantity }}
@@ -54,8 +50,6 @@
         </tbody>
     </table>
     <div style="width: 200px; position: relative; top: 50px; left: 500px; text-align: right">
-        <hr>
-        <p>Skupaj brez ddv: {{$counter - (($counter * env('MIX_DDV')) / 100) }}&euro;</p>
         <hr>
         <p>Skupaj: {{$counter}}&euro;</p>
     </div>
