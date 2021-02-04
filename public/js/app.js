@@ -99703,7 +99703,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: '/cart',
       name: 'cart',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3), __webpack_require__.e(2), __webpack_require__.e(7)]).then(__webpack_require__.bind(null, /*! ../pages/kosarica/index.vue */ "./resources/js/pages/kosarica/index.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(7)]).then(__webpack_require__.bind(null, /*! ../pages/kosarica/index.vue */ "./resources/js/pages/kosarica/index.vue"));
       },
       children: [{
         path: '/cart/1',
@@ -100183,6 +100183,9 @@ var instance = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
    */
   changeUserAdminStatus: function changeUserAdminStatus(id) {
     return instance.patch("/api/user/".concat(id, "/change/admin"));
+  },
+  getToken: function getToken() {
+    return instance.post('/api/user/get/token');
   },
 
   /**

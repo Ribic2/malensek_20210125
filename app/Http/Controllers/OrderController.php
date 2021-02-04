@@ -14,6 +14,8 @@ use App\Order;
 use App\OrderUiid;
 use App\User;
 use PayPalCheckoutSdk\Core\ProductionEnvironment;
+use PayPalCheckoutSdk\Orders\OrdersCaptureRequest;
+use PayPalCheckoutSdk\Orders\OrdersCreateRequest;
 use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
@@ -22,7 +24,6 @@ use Illuminate\Support\Str;
 
 // Paypal
 use PayPalCheckoutSdk\Core\PayPalHttpClient;
-use PayPalCheckoutSdk\Orders\OrdersCreateRequest;
 
 class OrderController extends Controller
 {
@@ -35,9 +36,8 @@ class OrderController extends Controller
         $clientId = env('PAYPAL_LIVE_CLIENT_ID');
         $clientSecret = env('PAYPAL_LIVE_CLIENT_SECRET');
 
-        $env = new ProductionEnvironment($clientId, $clientSecret);
-        $client = new PayPalHttpClient($env);
-        $this->client = $client;
+        $environment = new ProductionEnvironment($clientId, $clientSecret);
+        $this->client = new PayPalHttpClient($environment);
     }
 
     /**
@@ -97,6 +97,7 @@ class OrderController extends Controller
         $request->body = [
             "intent" => "CAPTURE",
             "purchase_units" => [[
+                "reference_id" => "test_ref_id1",
                 "amount" => [
                     "value" => $this->price,
                     "currency_code" => "EUR"
@@ -109,7 +110,7 @@ class OrderController extends Controller
         ];
 
         return response()->json(
-            $this->client->execute($request),
+           $this->client->execute($request)
         );
     }
 
@@ -120,13 +121,12 @@ class OrderController extends Controller
      */
     public function createPDF(string $UUID)
     {
-        #                67f742b7-4515-4a96-9adc-24aa4515c395
         // I don't know why it wont work, I know it ugly but is works
         $order = Order::where('UUID', $UUID)->with('items')->get();
         $user = OrderUiid::where('UUID', $UUID)->with('user')->first();
-        return PDF::loadView('mails.orderSendPDF',  ["items" => $order, "user" => $user]);
-        #return $pdf->loadView('mails.orderSendPDF', ["items" => $order, "user" => $user]);
+        return PDF::loadView('mails.orderSendPDF', ["items" => $order, "user" => $user]);
     }
+
     /**
      * Adds order to database
      * @param Request $request
@@ -136,6 +136,15 @@ class OrderController extends Controller
     {
         (string)$token = $request->input('token');
         (string)$UUID = Str::uuid();
+
+
+        $orderId = $request->input('orderID');
+
+        // Checks if order was paid or not
+        if($orderId != null){
+            $orderCapture = new OrdersCaptureRequest($orderId);
+            $this->client->execute($orderCapture);
+        }
 
         $token = $request->get('token');
         $user = User::where(['token' => $token])->first();
@@ -177,7 +186,7 @@ class OrderController extends Controller
             foreach ($items as $item) {
 
                 // Checks if item was found or not
-                if(Item::find($item["items"]["id"]) == null){
+                if (Item::find($item["items"]["id"]) == null) {
                     abort(403, "Item in cart was not found");
                 }
 
@@ -239,7 +248,7 @@ class OrderController extends Controller
     public function notComplete(): JsonResponse
     {
         return response()->json(
-            OrderUiidResource::collection(OrderUiid::where('status', 'not-reviewed')->orWhere( 'status', 'delayed')->get())
+            OrderUiidResource::collection(OrderUiid::where('status', 'not-reviewed')->orWhere('status', 'delayed')->get())
         );
     }
 
@@ -250,7 +259,7 @@ class OrderController extends Controller
     public function latestOrders(): JsonResponse
     {
         return response()->json(
-            OrderUiidResource::collection(OrderUiid::where('status', 'not-reviewed')->orWhere( 'status', 'delayed')->get()->sortDesc())
+            OrderUiidResource::collection(OrderUiid::where('status', 'not-reviewed')->orWhere('status', 'delayed')->get()->sortDesc())
         );
     }
 
@@ -261,7 +270,7 @@ class OrderController extends Controller
     public function oldestOrders(): JsonResponse
     {
         return response()->json(
-            OrderUiidResource::collection(OrderUiid::where('status', 'not-reviewed')->orWhere( 'status', 'delayed')->get()->sortBy(['Created_at']))
+            OrderUiidResource::collection(OrderUiid::where('status', 'not-reviewed')->orWhere('status', 'delayed')->get()->sortBy(['Created_at']))
         );
     }
 

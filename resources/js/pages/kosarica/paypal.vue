@@ -6,9 +6,13 @@
 
 
 <script>
-
 export default {
     name: "paypal.vue",
+    data(){
+        return{
+            token: null
+        }
+    },
     mounted() {
         paypal.Buttons({
             createOrder: (data, actions) => {
@@ -23,12 +27,12 @@ export default {
                         cart: this.cart
                     })
                 })
-                .then(function(res){
-                    return res.json()
-                })
-                .then(function(data){
-                    return data.result.id
-                })
+                    .then(function(res){
+                        return res.json()
+                    })
+                    .then(function(data){
+                        return data.result.id
+                    })
             },
             onApprove: (data, actions) =>  {
                 this.$store.commit('TOGGLE_SPINNER', true)
@@ -40,20 +44,20 @@ export default {
                     },
                     body: JSON.stringify({
                         paymentID: data.paymentID,
-                        payerID: data.payerID,
+                        orderID: data.orderID,
                         token: this.user.token,
                         cart: this.cart,
                         typeOfPayment: 'prepaid'
                     })
                 })
-                .then((res)=>{
-                    localStorage.removeItem('cart')
-                    this.$store.commit('ADD_DATA_TO_CART', [])
-                })
-                .then(()=>{
-                    this.$store.commit('TOGGLE_SPINNER', false)
-                    this.$router.push('/success')
-                })
+                    .then((res)=>{
+                        localStorage.removeItem('cart')
+                        this.$store.commit('ADD_DATA_TO_CART', [])
+                    })
+                    .then(()=>{
+                        this.$store.commit('TOGGLE_SPINNER', false)
+                        this.$router.push('/success')
+                    })
             }
         }).render('#paypal-button'); // Display payment options on your web
     },
@@ -68,10 +72,4 @@ export default {
     }
 }
 </script>
-
-<style>
-#paypal-button > * {
-    z-index: 0 !important;
-}
-</style>
 
