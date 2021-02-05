@@ -233,49 +233,20 @@ export default {
         getCart() {
             return this.$store.dispatch('getCart')
         },
-        getFavourites() {
-            return this.$store.dispatch('getFavourites')
-        },
         logout() {
             return this.$store.dispatch('logout')
         },
-
-        getFavouritesGuest() {
-            return this.$store.dispatch('getFavoritesGuest')
-        },
-
-        getCartGuest() {
-            return this.$store.dispatch('getCartGuest')
-        },
-
         setGuest() {
             return this.$store.dispatch('setGuest')
-        },
-
-        callDependOnUser() {
-            api.getUsersData()
-                .then((response) => {
-                    this.getFavourites()
-                    this.getCart()
-                    this.$store.commit('SET_USER_DATA', response.data.user)
-                })
-                .catch(() => {
-                    this.getFavouritesGuest()
-                    this.getCartGuest()
-                    this.setGuest()
-                })
         },
     },
     beforeCreate() {
         api.getUsersData()
             .then((response) => {
-                this.getFavourites()
                 this.getCart()
                 this.$store.commit('SET_USER_DATA', response.data.user)
             })
             .catch((err) => {
-                this.getFavouritesGuest()
-                this.getCartGuest()
                 this.setGuest()
             })
     },
@@ -296,6 +267,7 @@ export default {
 #mainContainer {
     min-height: 86vh;
 }
+
 .v-card__text > a {
     color: white;
 }

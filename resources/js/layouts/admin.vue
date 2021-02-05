@@ -33,19 +33,28 @@
 
 <script>
 
-import { mdiCardBulletedOutline, mdiOrderNumericAscending, mdiAccount, mdiContacts} from '@mdi/js'
+import {mdiCardBulletedOutline, mdiOrderNumericAscending, mdiAccount, mdiContacts} from '@mdi/js'
 import SpinnerOverlay from "../components/spinnerOverlay";
+import api from "../services/api";
+
 export default {
     components: {SpinnerOverlay},
     data() {
         return {
             buttons: [
                 {id: 1, icon: mdiCardBulletedOutline, link: '/admin'},
-                {id: 2, icon: mdiOrderNumericAscending , link: '/admin/orders'},
+                {id: 2, icon: mdiOrderNumericAscending, link: '/admin/orders'},
                 {id: 3, icon: mdiAccount, link: '/admin/users'},
                 {id: 4, icon: mdiContacts, link: '/admin/contacts'}
             ]
         }
+    },
+    mounted() {
+        api.getUsersData()
+            .then((response) => {
+                console.log(response)
+                this.$store.commit('SET_USER_DATA', response.data.user)
+            })
     }
 }
 </script>

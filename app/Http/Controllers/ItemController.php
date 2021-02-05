@@ -144,7 +144,7 @@ class ItemController extends Controller
     {
         return response()->json(Item::where([
             'delisted' => 0,
-        ])->get());
+        ])->orderBy('Created_at', 'desc')->get());
     }
 
 

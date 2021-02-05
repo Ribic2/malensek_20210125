@@ -57,7 +57,9 @@
                 </v-btn>
             </v-card-actions>
         </v-form>
-        <v-alert type="error" v-if="response !== null">
+        <v-alert
+            :type="error ? 'error': 'success'"
+            v-if="response !== null">
             {{response}}
         </v-alert>
       </v-card-text>
@@ -83,6 +85,8 @@ export default {
             phone: '',
             name: '',
             surname: '',
+
+            error: null,
             response: null,
             //Other variables
             overlay: false,
@@ -97,6 +101,7 @@ export default {
     },
     methods:{
         registerAction(){
+            this.$store.commit('TOGGLE_SPINNER', true)
             let data = {
                 email: this.email,
                 phone: this.phone,
@@ -106,6 +111,13 @@ export default {
             api.register(data)
             .then((response)=>{
                 this.response = response.data
+                this.error = false
+                this.$store.commit('TOGGLE_SPINNER', false)
+            })
+            .catch((err)=>{
+                this.error = true
+                this.response = "Napaka pri registraciji"
+                this.$store.commit('TOGGLE_SPINNER', false)
             })
         }
     }

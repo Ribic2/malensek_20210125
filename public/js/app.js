@@ -99646,39 +99646,39 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       });
     },
     component: function component() {
-      return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(12)]).then(__webpack_require__.bind(null, /*! ../layouts/admin */ "./resources/js/layouts/admin.vue"));
+      return Promise.all(/*! import() */[__webpack_require__.e(30), __webpack_require__.e(12)]).then(__webpack_require__.bind(null, /*! ../layouts/admin */ "./resources/js/layouts/admin.vue"));
     },
     children: [{
       path: '',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(5)]).then(__webpack_require__.bind(null, /*! ../pages/admin/Items/items.vue */ "./resources/js/pages/admin/Items/items.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(30), __webpack_require__.e(5)]).then(__webpack_require__.bind(null, /*! ../pages/admin/Items/items.vue */ "./resources/js/pages/admin/Items/items.vue"));
       }
     }, {
       path: 'orders',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, /*! ../pages/admin/orders.vue */ "./resources/js/pages/admin/orders.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(30), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, /*! ../pages/admin/orders.vue */ "./resources/js/pages/admin/orders.vue"));
       }
     }, {
       path: 'contacts',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(22)]).then(__webpack_require__.bind(null, /*! ../pages/admin/contacts.vue */ "./resources/js/pages/admin/contacts.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(30), __webpack_require__.e(22)]).then(__webpack_require__.bind(null, /*! ../pages/admin/contacts.vue */ "./resources/js/pages/admin/contacts.vue"));
       }
     }, {
       path: 'users',
       component: function component() {
-        return __webpack_require__.e(/*! import() */ 14).then(__webpack_require__.bind(null, /*! ../pages/admin/users.vue */ "./resources/js/pages/admin/users.vue"));
+        return __webpack_require__.e(/*! import() */ 18).then(__webpack_require__.bind(null, /*! ../pages/admin/users.vue */ "./resources/js/pages/admin/users.vue"));
       }
     }]
   }, {
     path: '/',
     component: function component() {
-      return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(27), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, /*! ../layouts/default */ "./resources/js/layouts/default.vue"));
+      return Promise.all(/*! import() */[__webpack_require__.e(30), __webpack_require__.e(27), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, /*! ../layouts/default */ "./resources/js/layouts/default.vue"));
     },
     children: [// Home page
     {
       path: '',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(4), __webpack_require__.e(23)]).then(__webpack_require__.bind(null, /*! ../pages/index/index */ "./resources/js/pages/index/index.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(30), __webpack_require__.e(8), __webpack_require__.e(23)]).then(__webpack_require__.bind(null, /*! ../pages/index/index */ "./resources/js/pages/index/index.vue"));
       }
     }, // Contact page
     {
@@ -99690,20 +99690,20 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     {
       path: '/favourites',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(4), __webpack_require__.e(8)]).then(__webpack_require__.bind(null, /*! ../pages/favourites.vue */ "./resources/js/pages/favourites.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(30), __webpack_require__.e(8), __webpack_require__.e(1)]).then(__webpack_require__.bind(null, /*! ../pages/favourites.vue */ "./resources/js/pages/favourites.vue"));
       }
     }, // Login
     {
       path: '/login',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(25)]).then(__webpack_require__.bind(null, /*! ../pages/user/login.vue */ "./resources/js/pages/user/login.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(30), __webpack_require__.e(4), __webpack_require__.e(25)]).then(__webpack_require__.bind(null, /*! ../pages/user/login.vue */ "./resources/js/pages/user/login.vue"));
       }
     }, // Cart
     {
       path: '/cart',
       name: 'cart',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(7)]).then(__webpack_require__.bind(null, /*! ../pages/kosarica/index.vue */ "./resources/js/pages/kosarica/index.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(30), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(7)]).then(__webpack_require__.bind(null, /*! ../pages/kosarica/index.vue */ "./resources/js/pages/kosarica/index.vue"));
       },
       children: [{
         path: '/cart/1',
@@ -99726,12 +99726,12 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     {
       path: '/register',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(26)]).then(__webpack_require__.bind(null, /*! ../pages/user/register.vue */ "./resources/js/pages/user/register.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(30), __webpack_require__.e(26)]).then(__webpack_require__.bind(null, /*! ../pages/user/register.vue */ "./resources/js/pages/user/register.vue"));
       }
     }, {
       path: '/profile',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! ../pages/user/profile.vue */ "./resources/js/pages/user/profile.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(4), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! ../pages/user/profile.vue */ "./resources/js/pages/user/profile.vue"));
       },
       beforeEnter: function beforeEnter(to, from, next) {
         _services_api__WEBPACK_IMPORTED_MODULE_2__["default"].getUsersData().then(function (response) {
@@ -99748,14 +99748,14 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: '/item/:id',
       name: 'item',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(13)]).then(__webpack_require__.bind(null, /*! ../pages/Item/View.vue */ "./resources/js/pages/Item/View.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(30), __webpack_require__.e(13)]).then(__webpack_require__.bind(null, /*! ../pages/Item/View.vue */ "./resources/js/pages/Item/View.vue"));
       }
     }, // Reset users password route
     {
       path: '/reset-password',
       name: 'reset-password',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(24)]).then(__webpack_require__.bind(null, /*! ../pages/resetPassword/forgotPassword.vue */ "./resources/js/pages/resetPassword/forgotPassword.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(30), __webpack_require__.e(4), __webpack_require__.e(24)]).then(__webpack_require__.bind(null, /*! ../pages/resetPassword/forgotPassword.vue */ "./resources/js/pages/resetPassword/forgotPassword.vue"));
       }
     }, {
       path: '/reset-password/:token',
@@ -99766,12 +99766,12 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     }, {
       path: '/opodjetju',
       component: function component() {
-        return __webpack_require__.e(/*! import() */ 18).then(__webpack_require__.bind(null, /*! ../pages/about/index */ "./resources/js/pages/about/index.vue"));
+        return __webpack_require__.e(/*! import() */ 17).then(__webpack_require__.bind(null, /*! ../pages/about/index */ "./resources/js/pages/about/index.vue"));
       }
     }, {
       path: '/success',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(17)]).then(__webpack_require__.bind(null, /*! ../pages/kosarica/success */ "./resources/js/pages/kosarica/success.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(30), __webpack_require__.e(16)]).then(__webpack_require__.bind(null, /*! ../pages/kosarica/success */ "./resources/js/pages/kosarica/success.vue"));
       }
     }, {
       path: '/set-password',
@@ -99794,14 +99794,14 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     }, {
       path: '*',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(16)]).then(__webpack_require__.bind(null, /*! ../layouts/error */ "./resources/js/layouts/error.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(30), __webpack_require__.e(15)]).then(__webpack_require__.bind(null, /*! ../layouts/error */ "./resources/js/layouts/error.vue"));
       }
     }]
   }, {
     path: '/checkout',
     name: 'checkout',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ 15).then(__webpack_require__.bind(null, /*! ../pages/kosarica/checkout.vue */ "./resources/js/pages/kosarica/checkout.vue"));
+      return __webpack_require__.e(/*! import() */ 14).then(__webpack_require__.bind(null, /*! ../pages/kosarica/checkout.vue */ "./resources/js/pages/kosarica/checkout.vue"));
     }
   }]
 });
@@ -100183,9 +100183,6 @@ var instance = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
    */
   changeUserAdminStatus: function changeUserAdminStatus(id) {
     return instance.patch("/api/user/".concat(id, "/change/admin"));
-  },
-  getToken: function getToken() {
-    return instance.post('/api/user/get/token');
   },
 
   /**

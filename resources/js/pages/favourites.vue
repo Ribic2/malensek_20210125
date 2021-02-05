@@ -1,20 +1,27 @@
 <template>
     <v-container>
-
-        <empty v-if="favourites.length === 0" errorText="Nimate nobenega priljubljenega izdelka!"></empty>
-
-        <v-row v-else>
+        <v-row v-if="favourites.length !== 0">
             <v-col
-                v-for="(product, index) in favourites" v-bind:key="index"
                 cols="12"
                 xl="3"
                 lg="6"
                 md="6"
+                v-for="(productItem, index) in favourites"
+                v-bind:key="index"
             >
-                <item v-bind:product="product.items" v-if="$store.state.user.user !== null"></item>
-                <item v-bind:product="product" v-else></item>
+                <item
+                    v-if="user.length === 0"
+                    v-bind:product="productItem"
+                ></item>
+
+                <item
+                    v-else
+                    v-bind:product="productItem.items"
+                ></item>
             </v-col>
         </v-row>
+
+        <empty v-else errorText="Nimate nobenega priljubljenega izdelka!"></empty>
     </v-container>
 </template>
 
@@ -29,33 +36,34 @@ export default {
     },
     data() {
         return {
-            overlay: false
+            overlay: false,
         }
     },
     methods: {
         getFavourites() {
-            // Check if user is registered or not
-            if (this.$store.state.user.user.length === 0) {
-                this.$store.dispatch('getFavoritesGuest')
+            if (this.user.length === 0) {
+               this.$store.dispatch('getFavoritesGuest')
             } else {
                 this.$store.dispatch('getFavourites')
             }
-        },
-    },
-    computed: {
-        favourites() {
-            return this.$store.state.favourites.favourites
         }
     },
     mounted() {
         this.getFavourites()
-    }
-
+    },
+    computed: {
+        user() {
+            return this.$store.state.user.user
+        },
+        favourites(){
+            return this.$store.state.favourites.favourites
+        }
+    },
 }
 </script>
 
 <style scoped>
-    .container{
-        min-height: 80vh;
-    }
+.container {
+    min-height: 80vh;
+}
 </style>

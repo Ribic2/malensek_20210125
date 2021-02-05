@@ -18,7 +18,6 @@
                         <p><span class="font-weight-bold">Telefon: </span>{{ user.Telephone }}</p>
                         <p><span class="font-weight-bold">Hišna številka: </span>{{ user.houseNumberAndStreet }}
                             {{ user.Postcode }}</p>
-
                         <p v-if="user.roles.length > 0">
                             Uporabnik je administrator.
                         </p>
@@ -30,42 +29,35 @@
                         <p v-if="user.isNewCustomer">
                             Je nov uporabnik.
                         </p>
+
+                        <p v-if="user.isGuest">
+                            Uporabnik je guest
+                        </p>
+
                         <v-divider></v-divider>
-
                     </v-card-text>
-                    <div id="buttonHolder">
-                        <v-row>
-                            <v-col
-                                v-if="$store.state.user.Name != user.Name"
-                                cols="12"
-                            >
-                                <v-btn
-                                    width="100%"
-                                    @click="deleteUser(user.id)"
-                                >Izbriši uporabnika
-                                </v-btn>
-                            </v-col>
-                        </v-row>
 
-                        <v-row>
-                            <v-col
-                                v-if="$store.state.user.Name != user.Name"
-                                cols="12">
-                                <v-btn
-                                    width="100%"
-                                    v-if="user.roles.length === 0"
-                                    @click="changeUsersRoleToAdmin(user.id)"
-                                >Dodeli administrator
-                                </v-btn>
+                    <div v-if="userData.id !== user.id">
+                        <v-card-text>
+                            <v-btn
+                                block
+                                @click="deleteUser(user.id)"
+                            >Izbriši uporabnika
+                            </v-btn>
+                            <v-btn
+                                block
+                                v-if="user.roles.length === 0"
+                                @click="changeUsersRoleToAdmin(user.id)"
+                            >Dodeli administrator
+                            </v-btn>
 
-                                <v-btn
-                                    width="100%"
-                                    v-else
-                                    @click="changeUsersRoleToAdmin(user.id)"
-                                >Odstrani administratorja
-                                </v-btn>
-                            </v-col>
-                        </v-row>
+                            <v-btn
+                                block
+                                v-else
+                                @click="changeUsersRoleToAdmin(user.id)"
+                            >Odstrani administratorja
+                            </v-btn>
+                        </v-card-text>
                     </div>
                 </v-card>
             </v-col>
@@ -117,15 +109,11 @@ export default {
     },
     mounted() {
         this.getAllUsers()
+    },
+    computed: {
+        userData() {
+            return this.$store.state.user.user
+        }
     }
 }
 </script>
-
-<style scoped>
-#buttonHolder {
-    position: absolute;
-    bottom: 0px;
-    width: 90%;
-    left: 5%;
-}
-</style>
