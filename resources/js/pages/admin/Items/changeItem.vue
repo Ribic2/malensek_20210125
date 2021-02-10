@@ -25,11 +25,10 @@
                         <v-text-field
                             label="Cena izdelka"
                             v-model="itemPrice"
-
+                            @focusout="formatPrice()"
                         ></v-text-field>
 
                         <v-textarea
-
                             v-model="itemDescription"
                             label="Opis"
                             no-resize
@@ -68,6 +67,7 @@
                     Preklici
                 </v-btn>
             </v-card-actions>
+            {{ itemPrice }}
         </v-card>
     </v-dialog>
 </template>
@@ -83,7 +83,7 @@ export default {
     data() {
         return {
             id: this.item.id,
-            itemPrice: this.item.itemPrice,
+            itemPrice: parseFloat(this.item.itemPrice).toFixed(2),
             itemName:this.item.itemName,
             quantity: this.item.quantity,
             itemDescription: this.item.itemDescription,
@@ -92,6 +92,12 @@ export default {
         }
     },
     methods: {
+        // Formats item price to 2 decimal
+        formatPrice() {
+            if(this.itemPrice !== null){
+                this.itemPrice = parseFloat(this.itemPrice).toFixed(2)
+            }
+        },
         changeData(){
             let data = {
                 itemPrice: this.itemPrice,

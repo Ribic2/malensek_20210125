@@ -153,11 +153,11 @@ class ItemController extends Controller
      * It could be done in changeItem part but there was to much logic involved so I moved it to
      * separate function.
      * @param int $id
-     * @param int $price
+     * @param float $price
      * @param bool $isOnSale
      * @param int $discount
      */
-    public function changeItemPrice(int $id, int $price, bool $isOnSale, int $discount)
+    public function changeItemPrice(int $id, float $price, bool $isOnSale, int $discount)
     {
         // Item object
         $item = Item::find($id);
